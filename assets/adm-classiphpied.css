@@ -1,0 +1,25 @@
+/* (A) SHOW HIDE */
+#clp-loading { transition: opacity 0.3s; }
+.clp-hide { opacity: 0; visibility: hidden; height: 0; }
+.clp-pg-hide { display: none; }
+
+/* (B) NOW LOADING */
+#clp-loading {
+  width: 100vw; height: 100vh;
+  position: fixed; top: 0; left: 0; z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+}
+#clp-loading .spinner-border {
+  width: 80px; height: 80px;
+}
+
+/* (C) TOAST */
+#clp-toast { z-index: 99; }
+
+/* (D) CUSTOM COLORS & ELEMENTS */
+.clp-grey { background-color: #767b8e; }
+.zebra .row:nth-child(odd) { background-color: #f2f2f2; }
+.clp-thumb {
+  width: 100%; height: 200px; object-fit: cover;
+  border: 1px solid #aaa;
+}
