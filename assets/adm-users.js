@@ -2,7 +2,7 @@ var usr = {
   // (A) SHOW ALL USERS
   pg : 1, // CURRENT PAGE
   find : "", // CURRENT SEARCH
-  list : function ()  {
+  list : () => {
     clp.page(1);
     clp.load({
       page : "users/list",
@@ -16,13 +16,13 @@ var usr = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : function (pg) { if (pg!=usr.pg) {
+  goToPage : (pg) => { if (pg!=usr.pg) {
     usr.pg = pg;
     usr.list();
   }},
 
   // (C) SEARCH USER
-  search : function () {
+  search : () => {
     usr.find = document.getElementById("user-search").value;
     usr.pg = 1;
     usr.list();
@@ -31,17 +31,17 @@ var usr = {
 
   // (D) SHOW ADD/EDIT DOCKET
   // id : user ID, for edit only
-  addEdit : function (id) {
+  addEdit : (id) => {
     clp.load({
       page : "users/form",
       target : "clp-page-2",
       data : { id : id ? id : "" },
-      onload : function () { clp.page(2); }
+      onload : () => { clp.page(2); }
     });
   },
 
   // (E) SAVE USER
-  save : function () {
+  save : () => {
     // (E1) GET DATA
     var data = {
       name : document.getElementById("user_name").value,
@@ -65,7 +65,7 @@ var usr = {
   // (F) DELETE USER
   //  id : int, user ID
   //  confirm : boolean, confirmed delete
-  del : function (id, confirm) {
+  del : (id, confirm) => {
     if (confirm) {
       clp.api({
         mod : "users",
@@ -75,7 +75,7 @@ var usr = {
         onpass : usr.list
       });
     } else {
-      clp.modal("Please confirm", "Delete user?", function(){
+      clp.modal("Please confirm", "Delete user?", () => {
         usr.del(id, true);
       });
     }

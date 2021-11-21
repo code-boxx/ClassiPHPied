@@ -23,6 +23,9 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
     <button class="btn btn-danger btn-sm" onclick="cla.del(<?=$id?>)">
       <span class="mi">delete</span>
     </button>
+    <a class="btn btn-primary btn-sm" target="_blank" href="<?=HOST_BASE?>show/?id=<?=$id?>">
+      <span class="mi">search</span>
+    </a>
     <button class="btn btn-primary btn-sm" onclick="cla.addEdit(<?=$id?>)">
       <span class="mi">edit</span>
     </button>

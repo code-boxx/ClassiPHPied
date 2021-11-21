@@ -1,7 +1,7 @@
 var img = {
   // (A) SHOW ALL IMAGES
   pg : 1, // CURRENT PAGE
-  list : function ()  {
+  list : () => {
     clp.page(1);
     clp.load({
       page : "img/list",
@@ -12,17 +12,17 @@ var img = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : function (pg) { if (pg!=img.pg) {
+  goToPage : (pg) => { if (pg!=img.pg) {
     img.pg = pg;
     img.list();
   }},
 
   // (C) COPY LINK
   //  i : image file
-  copy : function (i) {
-    navigator.clipboard.writeText(clphost.uploads + i).then(function() {
+  copy : (i) => {
+    navigator.clipboard.writeText(clphost.uploads + i).then(() => {
       clp.toast(1, "Success", "Link copied");
-    }, function() {
+    }, () => {
       clp.toast(0, "Failed", "No permission to access clipboard");
     });
   },
@@ -30,7 +30,7 @@ var img = {
   // (D) DELETE IMAGE
   //  i : image file
   //  confirm : boolean, confirmed delete
-  del : function (i, confirm) {
+  del : (i, confirm) => {
     if (confirm) {
       clp.api({
         mod : "images",
@@ -40,7 +40,7 @@ var img = {
         onpass : img.list
       });
     } else {
-      clp.modal("Please confirm", "Delete image?", function(){
+      clp.modal("Please confirm", "Delete image?", () => {
         img.del(i, true);
       });
     }
@@ -53,7 +53,7 @@ var img = {
     now : 0, // current file
     all : 0 // all files
   },
-  upload : function (i) {
+  upload : (i) => {
     // (E1) NEW UPLOAD
     if (i==undefined) {
       clp.loading(1);
@@ -73,7 +73,7 @@ var img = {
         data : { "upfile": img.upqueue.list[img.upqueue.now] },
         loading : false,
         passmsg : "Image Uploaded",
-        onpass : function () {
+        onpass : () => {
           img.upqueue.now++;
           if (img.upqueue.now == img.upqueue.all) {
             clp.loading(0);

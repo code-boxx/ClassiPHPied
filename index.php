@@ -19,11 +19,11 @@ if (!file_exists($htaccess)) {
 
 // (C) STRIP PATH DOWN TO AN ARRAY
 // E.G. HTTP://SITE.COM/HELLO/WORLD/ > $_PATH = ["HELLO", "WORLD"]
-$_PATH = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$_PATH = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 if (substr($_PATH, 0, strlen(HOST_BASE_PATH)) == HOST_BASE_PATH) {
   $_PATH = substr($_PATH, strlen(HOST_BASE_PATH));
 }
-$_PATH = rtrim($_PATH, '/');
+$_PATH = rtrim($_PATH, "/");
 $_PATH = explode("/", $_PATH);
 
 // (D) PAGE MODE

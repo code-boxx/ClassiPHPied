@@ -2,7 +2,7 @@ var cat = {
   // (A) SHOW ALL CATEGORIES
   pg : 1, // CURRENT PAGE
   find : "", // CURRENT SEARCH
-  list : function ()  {
+  list : () => {
     clp.page(1);
     clp.load({
       page : "cat/list",
@@ -16,13 +16,13 @@ var cat = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : function (pg) { if (pg!=cat.pg) {
+  goToPage : (pg) => { if (pg!=cat.pg) {
     cat.pg = pg;
     cat.list();
   }},
 
   // (C) SEARCH CATEGORIES
-  search : function () {
+  search : () => {
     cat.find = document.getElementById("cat-search").value;
     cat.pg = 1;
     cat.list();
@@ -31,17 +31,17 @@ var cat = {
 
   // (D) SHOW ADD/EDIT DOCKET
   // id : category ID, for edit only
-  addEdit : function (id) {
+  addEdit : (id) => {
     clp.load({
       page : "cat/form",
       target : "clp-page-2",
       data : { id : id ? id : "" },
-      onload : function () { clp.page(2); }
+      onload : () => { clp.page(2); }
     });
   },
 
   // (E) SAVE CATEGORY
-  save : function () {
+  save : () => {
     // (E1) GET DATA
     var data = {
       name : document.getElementById("cat_name").value,
@@ -63,7 +63,7 @@ var cat = {
   // (F) DELETE CATEGORY
   //  id : int, category ID
   //  confirm : boolean, confirmed delete
-  del : function (id, confirm) {
+  del : (id, confirm) => {
     if (confirm) {
       clp.api({
         mod : "category",
@@ -73,7 +73,7 @@ var cat = {
         onpass : cat.list
       });
     } else {
-      clp.modal("Please confirm", "Delete category?", function(){
+      clp.modal("Please confirm", "Delete category?", () => {
         cat.del(id, true);
       });
     }
