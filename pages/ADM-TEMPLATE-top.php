@@ -23,7 +23,7 @@
 
     <!-- (A4) CLASSIPHIED CLIENT ENGINE -->
     <link rel="stylesheet" href="<?=HOST_ASSETS?>adm-classiphpied.css"/>
-    <script>var clphost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN_FULL?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>",api:"<?=HOST_API_FULL?>"};</script>
+    <script>var clphost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>",api:"<?=HOST_API_BASE?>"};</script>
     <script async src="<?=HOST_ASSETS?>adm-classiphpied.js"></script>
   </head>
   <body>
@@ -58,7 +58,7 @@
       </div>
     </div></div></div>
 
-    <?php if (isset($_SESSION["user"])) { ?>
+    <?php if ($_USER!==false) { ?>
     <!-- (C) MAIN NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container-fluid">
       <!-- (C1) BRANDING LOGO
@@ -76,22 +76,22 @@
         <!-- (C3) LEFT MENU ITEMS -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_FULL?>">
+            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_BASE?>">
               <span class="mi mi-big">featured_play_list</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_FULL?>category">
+            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_BASE?>category">
               <span class="mi mi-big">category</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_FULL?>images">
+            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_BASE?>images">
               <span class="mi mi-big">image</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_FULL?>users">
+            <a class="nav-link" aria-current="page" href="<?=HOST_ADMIN_BASE?>users">
               <span class="mi mi-big">people</span>
             </a>
           </li>

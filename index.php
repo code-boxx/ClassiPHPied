@@ -16,6 +16,7 @@ if (!file_exists($htaccess)) {
   header("Location: " . $_SERVER["REQUEST_URI"]);
   exit();
 }
+unset($htaccess);
 
 // (C) STRIP PATH DOWN TO AN ARRAY
 // E.G. HTTP://SITE.COM/HELLO/WORLD/ > $_PATH = ["HELLO", "WORLD"]
@@ -27,45 +28,54 @@ $_PATH = rtrim($_PATH, "/");
 $_PATH = explode("/", $_PATH);
 
 // (D) PAGE MODE
-$pgadm = $_PATH[0]===HOST_ADMIN; // ADMIN PANEL?
-$pgajax = $pgadm ? (isset($_PATH[1]) && $_PATH[1]=="a") : $_PATH[0]=="a"; // AJAX CONTENT GET?
+$_ADM = $_PATH[0]===HOST_ADMIN; // ADMIN PANEL?
+$_AJAX = $_ADM ? (isset($_PATH[1]) && $_PATH[1]=="a") : $_PATH[0]=="a"; // AJAX CONTENT GET?
 
 // (E) ADMIN LOGIN CHECKS
-if ($pgadm) {
-  if (!isset($_SESSION["user"])) {
-    if ($pgajax) { exit("SE"); }
+if ($_ADM) {
+  if ($_USER===false) {
+    if ($_AJAX) { exit("SE"); }
     if (count($_PATH)>2 || $_PATH[1]!="login") {
-      header("Location: ". HOST_ADMIN_FULL ."login/");
+      header("Location: ". HOST_ADMIN_BASE ."login/");
       exit();
     }
   }
-  if (isset($_SESSION["user"]) && isset($_PATH[1]) && $_PATH[1]=="login") {
-    header("Location: ". HOST_ADMIN_FULL);
+  if ($_USER!==false && isset($_PATH[1]) && $_PATH[1]=="login") {
+    header("Location: ". HOST_ADMIN_BASE);
     exit();
   }
 }
 
 // (F) LOAD PAGE
+// (F1) PHYSICAL PAGE TO LOAD
 // HTTP://SITE.COM/ >>> LOAD PAGE-HOME.PHP
 // HTTP://SITE.COM/FOO/ >>> LOAD PAGE-FOO.PHP
 // HTTP://SITE.COM/FOO/BAR/ >>> LOAD PAGE-FOO-BAR.PHP
-// NOT FOUND >>> LOAD PAGE-404.PHP
-
-// (F1) TARGET PAGE FILE TO LOAD
-$pgfile = PATH_PAGES . "PAGE-" . ($pgadm ? "ADM-" : "");
-if ($pgadm) {
-  if (!isset($_PATH[1])) { $pgfile .= "home.php"; }
-  else { $pgfile .= implode("-", array_splice($_PATH, 1)) . ".php"; }
+$_PAGE = PATH_PAGES . "PAGE-" . ($_ADM ? "ADM-" : "");
+if ($_ADM) {
+  if (!isset($_PATH[1])) { $_PAGE .= "home.php"; }
+  else { $_PAGE .= implode("-", array_splice($_PATH, 1)) . ".php"; }
 } else {
-  $pgfile .= $_PATH[0]=="" ? "home.php" : implode("-", $_PATH) . ".php";
+  $_PAGE .= $_PATH[0]=="" ? "home.php" : implode("-", $_PATH) . ".php";
 }
 
-// (F2) ATTEMPT TO LOAD PAGE
-$pgexist = file_exists($pgfile);
-if (!$pgexist) {
+// (F2) NOT FOUND
+if (!file_exists($_PAGE)) {
   http_response_code(404);
-  if ($pgajax) { exit("PAGE NOT FOUND"); }
+  if ($_AJAX) { echo "PAGE NOT FOUND"; }
+  else {
+    require PATH_PAGES . ($_ADM ? "ADM-" : "") . "TEMPLATE-top.php";
+    require PATH_PAGES . "PAGE-404.php";
+    require PATH_PAGES . ($_ADM ? "ADM-" : "") . "TEMPLATE-bottom.php";
+  }
+  exit();
 }
-if (!$pgajax) { require PATH_PAGES . ($pgadm ? "ADM-" : "") . "TEMPLATE-top.php"; }
-require $pgexist ? $pgfile : PATH_PAGES . "PAGE-404.php";
-if (!$pgajax) { require PATH_PAGES . ($pgadm ? "ADM-" : "") . "TEMPLATE-bottom.php"; }
+
+// (F3) LOAD PAGE
+// FLAGS THAT MAY BE USEFUL IN PAGES
+// $_AJAX : AJAX MODE
+// $_ADM : ADMIN MODE
+// $_PAGE : CURRENT PHYSICAL PAGE
+if (!$_AJAX) { require PATH_PAGES . ($_ADM ? "ADM-" : "") . "TEMPLATE-top.php"; }
+require $_PAGE;
+if (!$_AJAX) { require PATH_PAGES . ($_ADM ? "ADM-" : "") . "TEMPLATE-bottom.php"; }
