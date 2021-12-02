@@ -26,13 +26,7 @@ SOFTWARE.
 ---
 ## INSTALLATION
 ---
-1) Create database and import lib/classiphpied.sql
-2) In lib/GO.php, change the host (A2), database (A3), JWT (A6) settings to your own.
-3) Access http://your-site.com once, let the system generate the .htaccess file.
-4) That's all, access http://your-site.com/admin for the admin panel.
-
-The default user is "admin@clp.com" and the password is "123456". Remember to change it later.
-
+Simply access your website and walk through the installer.
 
 
 ---

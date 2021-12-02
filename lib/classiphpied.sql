@@ -33,9 +33,6 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
-(1, 'Administrator', 'admin@clp.com', '$2y$10$XTeEFNnjkLcFtgEW7ej8g.QZp4KYcT1NeKxMXFEpUtxntPTd0ZRqG');
-
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`),
   ADD KEY `cat_name` (`cat_name`),
@@ -68,4 +65,4 @@ ALTER TABLE `classifieds`
   MODIFY `cla_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
