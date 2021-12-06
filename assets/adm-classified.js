@@ -3,8 +3,8 @@ var cla = {
   pg : 1, // CURRENT PAGE
   find : "", // CURRENT SEARCH
   list : () =>  {
-    clp.page(1);
-    clp.load({
+    cb.page(1);
+    cb.load({
       page : "cla/list",
       target : "cla-list",
       data : {
@@ -32,12 +32,12 @@ var cla = {
   // (D) SHOW ADD/EDIT DOCKET
   // id : classified ID, for edit only
   addEdit : (id) => {
-    clp.load({
+    cb.load({
       page : "cla/form",
-      target : "clp-page-2",
+      target : "cb-page-2",
       data : { id : id ? id : "" },
       onload : () => {
-        clp.page(2);
+        cb.page(2);
         tinymce.remove();
         tinymce.init({
           selector : "#cla_text",
@@ -54,7 +54,7 @@ var cla = {
     // (E1) MANUAL CHECK TINYMCE TEXT (HTML REQUIRED DOES NOT WORK)
     var text = tinymce.get("cla_text").getContent();
     if (text=="") {
-      clp.modal("Error", "Please fill in the classified text.");
+      cb.modal("Error", "Please fill in the classified text.");
       return false;
     }
 
@@ -84,7 +84,7 @@ var cla = {
     data.images = JSON.stringify(data.images);
 
     // (E3) AJAX
-    clp.api({
+    cb.api({
       mod : "classified",
       req : "save",
       data : data,
@@ -99,7 +99,7 @@ var cla = {
   //  confirm : boolean, confirmed delete
   del : (id, confirm) => {
     if (confirm) {
-      clp.api({
+      cb.api({
         mod : "classified",
         req : "del",
         data : { id: id },
@@ -107,7 +107,7 @@ var cla = {
         onpass : cla.list
       });
     } else {
-      clp.modal("Please confirm", "Delete this entry?", () => {
+      cb.modal("Please confirm", "Delete this entry?", () => {
         cla.del(id, true);
       });
     }
@@ -120,9 +120,9 @@ var img = {
   slot : 0, // CURRENT SELECTED SLOT
   init : (slot) => {
     img.slot = slot;
-    clp.page(3);
+    cb.page(3);
     if (!img.loaded) {
-      document.getElementById("clp-page-3").innerHTML = '<div id="img-list" class="row"></div>';
+      document.getElementById("cb-page-3").innerHTML = '<div id="img-list" class="row"></div>';
       img.loaded = true;
       img.list();
     }
@@ -131,7 +131,7 @@ var img = {
   // (B) LOAD IMAGES
   pg : 1, // CURRENT PAGE
   list : () => {
-    clp.load({
+    cb.load({
       page : "img/list",
       target : "img-list",
       data : {
@@ -151,13 +151,13 @@ var img = {
   // (C) PICK IMAGE
   pick : (i) => {
     // (C1) BACK TO FORM
-    clp.page(2);
+    cb.page(2);
 
     // (C2) CREATE NEW IMAGE TAG
     var slot = img.slot,
         wrap = document.getElementById("cla_img_" + img.slot),
         nimg = document.createElement("img");
-    nimg.src = clphost.uploads + i;
+    nimg.src = cbhost.uploads + i;
     nimg.className = "img-thumbnail cla-img";
     nimg.onclick = () => { img.remove(slot); };
     wrap.innerHTML = "";

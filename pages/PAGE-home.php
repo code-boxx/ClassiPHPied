@@ -1,21 +1,23 @@
 <!-- (A) PAGE SCRIPT -->
 <script src="<?=HOST_ASSETS?>classi.js"></script>
+<style>#cla-list{align-items:stretch}.card{height:100%}</style>
 
 <!-- (B) CATEGORIES LIST -->
-<h4>CATEGORIES</h4>
-<div class="row mb-5">
-  <div class="col-lg-3 m-2 border border-secondary" onclick="cla.cat(null)">All</div>
-  <?php
-  $_CORE->load("Category");
-  $cat = $_CORE->Category->getAll(null, "A");
-  if (is_array($cat)) { foreach ($cat as $cid=>$c) {
-    printf("<div class='col-lg-3 m-2 border border-secondary' onclick='cla.cat(%u)'>%s</div>",
-      $cid, $c["cat_name"]
-    );
-  }}
-  ?>
-</div>
+<nav class="navbar bg-light mb-4"><div class="container-fluid">
+  <h4>LISTINGS</h4>
+  <div class="d-flex">
+  <select id="cla-cat" class="form-control" onchange="cla.cat()">
+    <option value="">All</option>
+    <?php
+    $_CORE->load("Category");
+    $cat = $_CORE->Category->getAll(null, "A");
+    if (is_array($cat)) { foreach ($cat as $cid=>$c) {
+      printf("<option value='%u'>%s</option>", $cid, $c["cat_name"]);
+    }}
+    ?>
+  </select>
+  </div>
+</div></nav>
 
 <!-- (C) CLASSIFIEDS -->
-<h4>LISTING</h4>
-<div id="cla-list" class="row"></div>
+<div class="container"><div id="cla-list" class="row g-3"></div></div>

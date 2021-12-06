@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?=HOST_ASSETS?>bootstrap.min.css"/>
     <script defer src="<?=HOST_ASSETS?>bootstrap.bundle.min.js"></script>
     <!-- HOST URL -->
-    <script>var clphost={base:"<?=HOST_BASE?>",assets:"<?=HOST_ASSETS?>"};</script>
+    <script>var cbhost={base:"<?=HOST_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
   </head>
   <body>
     <!-- (B) MAIN NAV BAR -->

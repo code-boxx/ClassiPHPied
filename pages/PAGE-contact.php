@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <img src="<?=HOST_ASSETS?>people.jpg" class="img-fluid"/>
+  <img src="<?=HOST_UPLOADS?>people.jpg" class="img-fluid"/>
 </div>
 
 <h4 class="mt-4">About Us</h4>

@@ -2,8 +2,8 @@ var cla = {
   // (A) SHOW SELECTED CATEGORY
   cid : null, // category id
   page : 1, // current page
-  cat : (id) => {
-    cla.cid = id;
+  cat : () => {
+    cla.cid = document.getElementById("cla-cat").value;
     cla.page = 1;
     cla.list();
   },
@@ -23,7 +23,7 @@ var cla = {
     data.append("page", cla.page);
 
     // (C2) AJAX LOAD
-    fetch(clphost.base + "a/clist", { method:"POST", body:data })
+    fetch(cbhost.base + "a/clist", { method:"POST", body:data })
     .then((res)=>res.text())
     .then((txt) => {
       document.getElementById("cla-list").innerHTML = txt;

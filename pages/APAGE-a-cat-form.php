@@ -21,6 +21,6 @@ if ($edit) {
     <input type="text" class="form-control" id="cat_desc" value="<?=isset($cat)?$cat["cat_desc"]:""?>"/>
   </div>
 
-  <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="clp.page(1)"/>
+  <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="cb.page(1)"/>
   <input type="submit" class="col btn btn-primary btn-lg" value="Save"/>
 </form>

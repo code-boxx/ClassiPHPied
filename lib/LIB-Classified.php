@@ -154,12 +154,14 @@ class Classified extends Core {
     $pgn = $this->core->paginator($entries, $page);
 
     // (G2) GET CLASSIFIED ADS
-    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`
+    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`, cat.`cat_name`
             FROM `classifieds` c
-            LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)";
+            LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)
+            LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)
+            LEFT JOIN `categories` cat ON (cc.`cat_id`=cat.`cat_id`)";
     $data = null;
     if ($id!==null && $id!="") {
-      $sql .= " LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`) WHERE cc.`cat_id`=?";
+      $sql .= " WHERE cc.`cat_id`=?";
       $data = [$id];
     }
     $sql .= " ORDER BY c.`cla_date` DESC LIMIT {$pgn["x"]}, {$pgn["y"]}";

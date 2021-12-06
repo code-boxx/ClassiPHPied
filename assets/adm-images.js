@@ -2,8 +2,8 @@ var img = {
   // (A) SHOW ALL IMAGES
   pg : 1, // CURRENT PAGE
   list : () => {
-    clp.page(1);
-    clp.load({
+    cb.page(1);
+    cb.load({
       page : "img/list",
       target : "img-list",
       data : { page : img.pg }
@@ -20,10 +20,10 @@ var img = {
   // (C) COPY LINK
   //  i : image file
   copy : (i) => {
-    navigator.clipboard.writeText(clphost.uploads + i).then(() => {
-      clp.toast(1, "Success", "Link copied");
+    navigator.clipboard.writeText(cbhost.uploads + i).then(() => {
+      cb.toast(1, "Success", "Link copied");
     }, () => {
-      clp.toast(0, "Failed", "No permission to access clipboard");
+      cb.toast(0, "Failed", "No permission to access clipboard");
     });
   },
 
@@ -32,7 +32,7 @@ var img = {
   //  confirm : boolean, confirmed delete
   del : (i, confirm) => {
     if (confirm) {
-      clp.api({
+      cb.api({
         mod : "images",
         req : "del",
         data : { file: i },
@@ -40,7 +40,7 @@ var img = {
         onpass : img.list
       });
     } else {
-      clp.modal("Please confirm", "Delete image?", () => {
+      cb.modal("Please confirm", "Delete image?", () => {
         img.del(i, true);
       });
     }
@@ -56,7 +56,7 @@ var img = {
   upload : (i) => {
     // (E1) NEW UPLOAD
     if (i==undefined) {
-      clp.loading(1);
+      cb.loading(1);
       var field = document.getElementById("img-up");
       img.upqueue.list = field.files;
       img.upqueue.now = 0;
@@ -67,7 +67,7 @@ var img = {
 
     // (E2) PROCEED AJAX UPLOAD
     else {
-      clp.api({
+      cb.api({
         mod : "images",
         req : "upload",
         data : { "upfile": img.upqueue.list[img.upqueue.now] },
@@ -76,7 +76,8 @@ var img = {
         onpass : () => {
           img.upqueue.now++;
           if (img.upqueue.now == img.upqueue.all) {
-            clp.loading(0);
+            cb.loading(0);
+            document.getElementById("img-up").value = "";
             img.list();
           } else {
             img.upload(img.upqueue.now);

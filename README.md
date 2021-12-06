@@ -26,13 +26,22 @@ SOFTWARE.
 ---
 ## INSTALLATION
 ---
-Simply access your website and walk through the installer.
+Just access your website and walk through the installer.
+
+
+---
+## REQUIREMENTS
+---
+1) Not extensively tested, but should work with at least PHP 7.4.
+2) PHP PDO extension.
+3) Apache server with MOD REWRITE enabled.
+4) "Grade A" browser.
 
 
 ---
 ## DOCUMENTATION
 ---
-Please visit https://code-boxx.com/classiphpied-php-classified-system for more for more!
+Please visit https://code-boxx.com/classiphpied-php-classified-system for the documentation.
 
 
 ---

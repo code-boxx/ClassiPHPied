@@ -3,8 +3,8 @@ var cat = {
   pg : 1, // CURRENT PAGE
   find : "", // CURRENT SEARCH
   list : () => {
-    clp.page(1);
-    clp.load({
+    cb.page(1);
+    cb.load({
       page : "cat/list",
       target : "cat-list",
       data : {
@@ -32,11 +32,11 @@ var cat = {
   // (D) SHOW ADD/EDIT DOCKET
   // id : category ID, for edit only
   addEdit : (id) => {
-    clp.load({
+    cb.load({
       page : "cat/form",
-      target : "clp-page-2",
+      target : "cb-page-2",
       data : { id : id ? id : "" },
-      onload : () => { clp.page(2); }
+      onload : () => { cb.page(2); }
     });
   },
 
@@ -50,7 +50,7 @@ var cat = {
     var id = document.getElementById("cat_id").value;
     if (id!="") { data.id = id; }
     // (E2) AJAX
-    clp.api({
+    cb.api({
       mod : "category",
       req : "save",
       data : data,
@@ -65,7 +65,7 @@ var cat = {
   //  confirm : boolean, confirmed delete
   del : (id, confirm) => {
     if (confirm) {
-      clp.api({
+      cb.api({
         mod : "category",
         req : "del",
         data : { id: id },
@@ -73,7 +73,7 @@ var cat = {
         onpass : cat.list
       });
     } else {
-      clp.modal("Please confirm", "Delete category?", () => {
+      cb.modal("Please confirm", "Delete category?", () => {
         cat.del(id, true);
       });
     }

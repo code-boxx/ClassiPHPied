@@ -3,8 +3,8 @@ var usr = {
   pg : 1, // CURRENT PAGE
   find : "", // CURRENT SEARCH
   list : () => {
-    clp.page(1);
-    clp.load({
+    cb.page(1);
+    cb.load({
       page : "users/list",
       target : "user-list",
       data : {
@@ -32,11 +32,11 @@ var usr = {
   // (D) SHOW ADD/EDIT DOCKET
   // id : user ID, for edit only
   addEdit : (id) => {
-    clp.load({
+    cb.load({
       page : "users/form",
-      target : "clp-page-2",
+      target : "cb-page-2",
       data : { id : id ? id : "" },
-      onload : () => { clp.page(2); }
+      onload : () => { cb.page(2); }
     });
   },
 
@@ -52,7 +52,7 @@ var usr = {
     if (id!="") { data.id = id; }
 
     // (E2) AJAX
-    clp.api({
+    cb.api({
       mod : "users",
       req : "save",
       data : data,
@@ -67,7 +67,7 @@ var usr = {
   //  confirm : boolean, confirmed delete
   del : (id, confirm) => {
     if (confirm) {
-      clp.api({
+      cb.api({
         mod : "users",
         req : "del",
         data : { id: id },
@@ -75,7 +75,7 @@ var usr = {
         onpass : usr.list
       });
     } else {
-      clp.modal("Please confirm", "Delete user?", () => {
+      cb.modal("Please confirm", "Delete user?", () => {
         usr.del(id, true);
       });
     }

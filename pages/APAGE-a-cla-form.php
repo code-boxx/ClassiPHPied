@@ -82,7 +82,7 @@ if ($edit) {
   </div>
 </div>
 <div class="row"><div class="col mt-4">
-  <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="clp.page(1)"/>
+  <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="cb.page(1)"/>
   <input type="submit" class="col btn btn-primary btn-lg" value="Save"/>
 </div></div>
 </form>

@@ -35,7 +35,7 @@ if ($_ADM) {
 // HTTP://SITE.COM/ >>> LOAD PAGE-HOME.PHP
 // HTTP://SITE.COM/FOO/ >>> LOAD PAGE-FOO.PHP
 // HTTP://SITE.COM/FOO/BAR/ >>> LOAD PAGE-FOO-BAR.PHP
-$_PAGE = PATH_PAGES . "PAGE-" . ($_ADM ? "ADM-" : "");
+$_PAGE = PATH_PAGES . ($_ADM ? "A" : "") . "PAGE-";
 if ($_ADM) {
   if (!isset($_PATH[1])) { $_PAGE .= "home.php"; }
   else { $_PAGE .= implode("-", array_splice($_PATH, 1)) . ".php"; }
