@@ -1,7 +1,7 @@
 <?php
 // (A) FOR ADMIN ONLY
 if (!isset($_SESS["user"]) && $_PATH!="login/") {
-  if ($_POST["ajax"]) { exit("SE"); } // POSSIBLE SESSION EXPIRE IN AJAX LOAD
+  if ($_POST["ajax"]) { exit("E"); } // POSSIBLE SESSION EXPIRE IN AJAX LOAD
   $_CORE->redirect("login", HOST_ADMIN_BASE);
 }
 

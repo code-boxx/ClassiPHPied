@@ -2,46 +2,44 @@
 <html>
   <head>
     <!-- (A) HEAD -->
-    <!-- (A1) TITLE, DESC, CHARSET, FAVICON -->
+    <!-- (A1) TITLE, DESC, CHARSET, FAVICON, VIEWPORT -->
     <title><?=isset($_PMETA["title"])?$_PMETA["title"]:"Classiphpied Admin"?></title>
     <meta charset="utf-8">
     <meta name="description" content="<?=isset($_PMETA["desc"])?$_PMETA["desc"]:"Classiphpied Admin"?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
     <link rel="icon" href="<?=HOST_ASSETS?>favicon.png" type="image/png">
 
-    <!-- (A2) ZOOM IN, NO OUT -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-
-    <!-- (A3) WEB APP MANIFEST -->
-    <!-- https://web.dev/add-manifest/ -->
-    <link rel="manifest" href="<?=HOST_BASE?>manifest.json">
-
-    <!-- (A4) ANDROID/CHROME -->
+    <!-- (A2) ANDROID/CHROME -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="white">
 
-    <!-- (A5) IOS APP ICON + MOBILE SAFARI -->
+    <!-- (A3) IOS APP ICON + MOBILE SAFARI -->
     <link rel="apple-touch-icon" href="<?=HOST_ASSETS?>icon-512.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Hello World">
 
-    <!-- (A6) WINDOWS -->
+    <!-- (A4) WINDOWS -->
     <meta name="msapplication-TileImage" content="<?=HOST_ASSETS?>icon-512.png">
     <meta name="msapplication-TileColor" content="#ffffff">
 
     <?php if (isset($_SESS["user"])) { ?>
-    <!-- (A7) SERVICE WORKER -->
+    <!-- (A5) WEB APP MANIFEST -->
+    <!-- https://web.dev/add-manifest/ -->
+    <link rel="manifest" href="<?=HOST_BASE?>manifest-adm.json">
+
+    <!-- (A6) SERVICE WORKER -->
     <script>if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "/admin"});
     }</script>
     <?php } ?>
 
-    <!-- (A8) BOOTSTRAP -->
+    <!-- (A7) BOOTSTRAP -->
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="<?=HOST_ASSETS?>bootstrap.min.css">
     <script defer src="<?=HOST_ASSETS?>bootstrap.bundle.min.js"></script>
 
-    <!-- (A9) BURN-IN CSS -->
+    <!-- (A8) BURN-IN CSS -->
     <style>
     /* MATERIAL ICONS */
     /* https://fonts.google.com/icons */
@@ -56,11 +54,11 @@
     .zebra .d-flex:nth-child(odd){background-color:#efefef}#reader video{height:400px}.pagination{background:#f0f8ff}
     </style>
 
-    <!-- (A10) COMMON INTERFACE -->
+    <!-- (A9) COMMON INTERFACE -->
     <script>var cbhost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN_BASE?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
     <script defer src="<?=HOST_ASSETS?>ADM-cb.js"></script>
 
-    <!-- (A11) ADDITIONAL SCRIPTS -->
+    <!-- (A10) ADDITIONAL SCRIPTS -->
     <?php if (isset($_PMETA["load"])) { foreach ($_PMETA["load"] as $load) {
       if ($load[0]=="s") {
         printf("<script src='%s'%s></script>", $load[1], isset($load[2]) ? " ".$load[2] : "");
