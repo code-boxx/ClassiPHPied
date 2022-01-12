@@ -3,9 +3,9 @@
   <head>
     <!-- (A) HEAD -->
     <!-- (A1) TITLE, DESC, CHARSET, FAVICON -->
-    <title><?=isset($_PMETA["title"])?$_PMETA["title"]:"ClassiPHPied"?></title>
+    <title><?=isset($_PMETA["title"])?$_PMETA["title"]:"Classiphpied Admin"?></title>
     <meta charset="utf-8">
-    <meta name="description" content="<?=isset($_PMETA["desc"])?$_PMETA["desc"]:"ClassiPHPied - PHP Classified Ads"?>">
+    <meta name="description" content="<?=isset($_PMETA["desc"])?$_PMETA["desc"]:"Classiphpied Admin"?>">
     <link rel="icon" href="<?=HOST_ASSETS?>favicon.png" type="image/png">
 
     <!-- (A2) ZOOM IN, NO OUT -->
@@ -29,10 +29,12 @@
     <meta name="msapplication-TileImage" content="<?=HOST_ASSETS?>icon-512.png">
     <meta name="msapplication-TileColor" content="#ffffff">
 
+    <?php if (isset($_SESS["user"])) { ?>
     <!-- (A7) SERVICE WORKER -->
     <script>if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "./"});
+      navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "/admin"});
     }</script>
+    <?php } ?>
 
     <!-- (A8) BOOTSTRAP -->
     <!-- https://getbootstrap.com/ -->
@@ -50,11 +52,13 @@
     #cb-loading{transition:opacity .3s}.cb-hide{opacity:0;visibility:hidden;height:0}.cb-pg-hide{display:none}
     /* NOW LOADING */
     #cb-loading{width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:999;background:rgba(0,0,0,.7)}#cb-loading .spinner-border{width:80px;height:80px}
+    /* COMMON FORM */
+    .zebra .d-flex:nth-child(odd){background-color:#efefef}#reader video{height:400px}.pagination{background:#f0f8ff}
     </style>
 
     <!-- (A10) COMMON INTERFACE -->
-    <script>var cbhost={base:"<?=HOST_BASE?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>"};</script>
-    <script defer src="<?=HOST_ASSETS?>PAGE-cb.js"></script>
+    <script>var cbhost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN_BASE?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
+    <script defer src="<?=HOST_ASSETS?>ADM-cb.js"></script>
 
     <!-- (A11) ADDITIONAL SCRIPTS -->
     <?php if (isset($_PMETA["load"])) { foreach ($_PMETA["load"] as $load) {
@@ -98,8 +102,9 @@
       </div>
     </div></div></div>
 
+    <?php if (isset($_SESS["user"])) { ?>
     <!-- (C) MAIN NAV BAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"><div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:#0042a3"><div class="container-fluid">
       <!-- (C1) MENU TOGGLE BUTTON -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -108,31 +113,44 @@
       <!-- (C2) COLLAPSABLE WRAPPER -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- (C2-1) BRANDING LOGO -->
-        <a class="navbar-brand" href="<?=HOST_BASE?>">
+        <a class="navbar-brand" href="<?=HOST_ADMIN_BASE?>">
           <img src="<?=HOST_ASSETS?>favicon.png" loading="lazy" width="32" height="32"/>
         </a>
 
-        <!-- (C2-2) LEFT MENU ITEMS @TODO - ADD YOUR OWN ITEMS
+        <!-- (C2-2) LEFT MENU ITEMS -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="<?=HOST_BASE?>about">
-              <span class="mi mi-smol">featured_play_list</span> About
+            <a class="nav-link" href="<?=HOST_ADMIN_BASE?>category">
+              <span class="mi mi-smol">category</span> Categories
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?=HOST_ADMIN_BASE?>images">
+              <span class="mi mi-smol">image</span> Images
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?=HOST_ADMIN_BASE?>users">
+              <span class="mi mi-smol">people</span> Users
             </a>
           </li>
         </ul>
-        -->
       </div>
 
-      <?php if (isset($_SESS["user"])) { ?>
       <!-- (C3) RIGHT ITEMS -->
       <div class="d-flex align-items-center">
         <!-- (C3-1) TO FRONT END -->
-        <a class="btn btn-danger btn-sm mi me-2" href="<?=HOST_ADMIN_BASE?>">
+        <a class="btn btn-danger btn-sm mi me-2" href="<?=HOST_BASE?>">
           compare_arrows
         </a>
+
+        <!-- (C3-2) USER -->
+        <button class="btn btn-danger btn-sm mi" onclick="cb.bye()">
+          logout
+        </button>
       </div>
-      <?php } ?>
     </div></nav>
+    <?php } ?>
 
     <!-- (D) MAIN PAGE -->
     <div class="container pt-4">

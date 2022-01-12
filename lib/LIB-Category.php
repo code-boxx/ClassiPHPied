@@ -11,68 +11,56 @@ class Category extends Core {
 
     // (A2) ADD/UPDATE CATEGORY
     if ($id===null) {
-      return $this->DB->insert("categories", $fields, $data);
+      $this->DB->insert("categories", $fields, $data);
     } else {
       $data[] = $id;
-      return $this->DB->update("categories", $fields, "`cat_id`=?", $data);
+      $this->DB->update("categories", $fields, "`cat_id`=?", $data);
     }
+    return true;
   }
 
   // (B) DELETE CATEGORY
   //  $id : category id
   function del ($id) {
     $this->DB->start();
-    $pass = $this->DB->query("DELETE FROM `categories` WHERE `cat_id`=?", [$id]);
-    if ($pass) { $this->DB->query("DELETE FROM `cla_to_cat` WHERE `cat_id`=?", [$id]); }
-    $this->DB->end($pass);
-    return $pass;
+    $this->DB->delete("categories", "`cat_id`=?", [$id]);
+    $this->DB->delete("cla_to_cat", "`cat_id`=?", [$id]);
+    $this->DB->end();
+    return true;
   }
 
   // (C) GET CATEGORY
   //  $id : category id
   function get ($id) {
     return $this->DB->fetch(
-      "SELECT * FROM `categories` WHERE `cat_id`=?",
-      [$id]
+      "SELECT * FROM `categories` WHERE `cat_id`=?", [$id]
     );
   }
 
-  // (D) COUNT (FOR SEARCH & PAGINATION)
+  // (D) GET ALL OR SEARCH CATEGORY
   //  $search : optional, search term
-  function count ($search=null) {
-    $sql = "SELECT COUNT(*) FROM `categories`";
+  //  $page : optional, current page number
+  function getAll ($search=null, $page=null) {
+    // (D1) PARITAL USERS SQL + DATA
+    $sql = "FROM `categories`";
     $data = null;
     if ($search != null) {
       $sql .= " WHERE `cat_name` LIKE ? OR `cat_desc` LIKE ?";
       $data = ["%$search%", "%$search%"];
     }
-    return $this->DB->fetchCol($sql, $data);
-  }
 
-  // (E) GET ALL OR SEARCH CATEGORY
-  //  $search : optional, search term
-  //  $page : optional, current page number (use "A" to fetch all)
-  function getAll ($search=null, $page=1) {
-    // (E1) PAGINATION
-    if ($page!="A") {
-      $entries = $this->count($search);
-      if ($entries===false) { return false; }
-      $pgn = $this->core->paginator($entries, $page);
+    // (D2) PAGINATION
+    if ($page != null) {
+      $pgn = $this->core->paginator(
+        $this->DB->fetchCol("SELECT COUNT(*) $sql", $data), $page
+      );
+      $sql .= " LIMIT {$pgn["x"]}, {$pgn["y"]}";
     }
 
-    // (E2) GET CATEGORIES
-    $sql = "SELECT * FROM `categories`";
-    $data = null;
-    if ($search != null) {
-      $sql .= " WHERE `cat_name` LIKE ? OR `cat_desc` LIKE ?";
-      $data = ["%$search%", "%$search%"];
-    }
-    if ($page!="A") { $sql .= " LIMIT {$pgn["x"]}, {$pgn["y"]}"; }
-    $cat = $this->DB->fetchAll($sql, $data, "cat_id");
-    if ($cat===false) { return false; }
-
-    // (E3) RESULTS
-    if ($page=="A") { return $cat; }
-    else { return ["data" => $cat, "page" => $pgn]; }
+    // (D3) RESULTS
+    $cat = $this->DB->fetchAll("SELECT * $sql", $data, "cat_id");
+    return $page != null
+     ? ["data" => $cat, "page" => $pgn]
+     : $cat ;
   }
 }

@@ -23,8 +23,7 @@ if (count($images["data"])>0) { foreach ($images["data"] as $i) { ?>
     <?php if (!$pick) { ?>
     <a href="<?=HOST_UPLOADS . $i?>" target="_blank">
     <?php } ?>
-    <img class="cb-thumb" loading="lazy"
-         src="<?=HOST_UPLOADS . $i?>" <?=$pick?"onclick=\"img.pick('$i')\"":""?>/>
+    <img loading="lazy" src="<?=HOST_UPLOADS . $i?>" <?=$pick?"onclick=\"img.pick('$i')\"":""?>/>
     <?php if (!$pick) { ?>
     </a>
     <?php } ?>

@@ -23,7 +23,7 @@ var cla = {
     data.append("page", cla.page);
 
     // (C2) AJAX LOAD
-    fetch(cbhost.base + "a/clist", { method:"POST", body:data })
+    fetch(cbhost.base + "cla/list", { method:"POST", body:data })
     .then((res)=>res.text())
     .then((txt) => {
       document.getElementById("cla-list").innerHTML = txt;

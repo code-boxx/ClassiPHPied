@@ -4,12 +4,12 @@ $cat = $_CORE->autoCall("Category", "getAll");
 
 // (B) DRAW CATEGORIES LIST
 if (is_array($cat["data"])) { foreach ($cat["data"] as $id=>$c) { ?>
-<div class="row p-1">
-  <div class="col-9">
+<div class="d-flex align-items-center p-2">
+  <div class="flex-grow-1">
     <strong><?=$c["cat_name"]?></strong><br>
     <small><?=$c["cat_desc"]?></small>
   </div>
-  <div class="col text-end">
+  <div>
     <button class="btn btn-danger btn-sm" onclick="cat.del(<?=$id?>)">
       <span class="mi">delete</span>
     </button>
@@ -18,7 +18,9 @@ if (is_array($cat["data"])) { foreach ($cat["data"] as $id=>$c) { ?>
     </button>
   </div>
 </div>
-<?php }} else { echo "No categories found."; }
+<?php }} else { ?>
+<div class="d-flex align-items-center p-2">No categories found.</div>
+<?php }
 
 // (C) PAGINATION
 $_CORE->load("Page");

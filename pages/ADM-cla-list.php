@@ -1,11 +1,10 @@
 <?php
 // (A) GET CLASSIFIED ADS
 $ads = $_CORE->autoCall("Classified", "getAll");
-
 // (B) DRAW CLASSIFIEDS LIST
 if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
-<div class="row p-1">
-  <div class="col-9">
+<div class="d-flex align-items-center p-2">
+  <div class="flex-grow-1">
     <strong><?=$ad["cla_title"]?></strong><br>
     <small class="text-secondary">
       <span class="mi mi-smol">event</span> <?=$ad["cla_date"]?>
@@ -19,7 +18,7 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
       <span class="mi mi-smol">call</span> <?=$ad["cla_tel"]?$ad["cla_tel"]:"NIL"?>
     </small>
   </div>
-  <div class="col text-end">
+  <div>
     <button class="btn btn-danger btn-sm" onclick="cla.del(<?=$id?>)">
       <span class="mi">delete</span>
     </button>
@@ -31,7 +30,9 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
     </button>
   </div>
 </div>
-<?php }} else { echo "No classifieds found."; }
+<?php }} else { ?>
+<div class="d-flex align-items-center p-2">No classifieds found.</div>
+<?php }
 
 // (C) PAGINATION
 $_CORE->load("Page");
