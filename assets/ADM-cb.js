@@ -222,17 +222,14 @@ var cb = {
   },
 
   // (E) SIGN OFF
-  //  confirm : boolean, confirmed sign off
-  bye : (confirm) => {
-    if (confirm) {
+  bye : () => {
+    cb.modal("Please Confirm", "Sign off?", () => {
       cb.api({
         mod : "session", req : "logout",
-        nopass : true,
+        passmsg : false,
         onpass : () => { location.href = cbhost.admin + "login/"; }
       });
-    } else {
-      cb.modal("Please Confirm", "Sign off?", () => { cb.bye(true); });
-    }
+    });
   },
 
   // (F) PASSWORD/HASH STRENGTH CHECKER
