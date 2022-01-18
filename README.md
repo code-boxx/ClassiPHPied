@@ -13,7 +13,7 @@ ClassiPHPied is a very simple PHP Classified Ads System. Yes, this is not a “w
 
 
 ## INSTALLATION & DOCUMENTATION
-Just access `index.php` and walk through the installer. The admin panel can be accessed at `http://your-site.com/admin`.
+Just access `index.php` in your browser and walk through the installer. The admin panel can be accessed at `http://your-site.com/admin`.
 
 Visit https://code-boxx.com/classiphpied-php-classified-system for the documentation.
 <br><br>
@@ -21,7 +21,7 @@ Visit https://code-boxx.com/classiphpied-php-classified-system for the documenta
 
 ## REQUIREMENTS
 1) Not extensively tested, but should work with at least PHP 7.4.
-2) PHP PDO extension.
+2) PHP MYSQL PDO extension.
 3) Apache server with MOD REWRITE enabled.
 4) "Grade A" browser.
 <br><br>
