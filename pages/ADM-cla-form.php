@@ -8,22 +8,22 @@ $edit = isset($_POST["id"]) && $_POST["id"]!="";
 if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
 
 // (C) CLASSIFIED FORM ?>
-<h3 class="mb-4"><?=$edit?"EDIT":"ADD"?> CLASSIFIED</h3>
+<h3 class="mb-3"><?=$edit?"EDIT":"ADD"?> CLASSIFIED</h3>
 <form onsubmit="return cla.save()">
   <div class="row">
     <!-- (C1) LEFT -->
     <div class="col-md-7">
       <!-- (C1-1) SUMMARY -->
-      <div class="bg-white border p-4 mb-4">
-        <h5 class="mb-4">AD SUMMARY</h5>
+      <div class="bg-white border p-4 mb-3">
+        <h5 class="mb-3">AD SUMMARY</h5>
         <input type="hidden" id="cla_id" value="<?=isset($ad)?$ad["cla_id"]:""?>"/>
 
-        <div class="input-group mb-4">
+        <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">category</span>
           </div>
           <select class="form-control" id="cla_cat">
-            <option value="">None</option>
+            <option value="">No Category</option>
             <?php
             if (is_array($cat)) { foreach ($cat as $cid=>$c) {
               printf("<option value='%u'%s>%s</option>",
@@ -35,7 +35,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
           </select>
         </div>
 
-        <div class="input-group mb-4">
+        <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">title</span>
           </div>
@@ -51,8 +51,8 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       </div>
 
       <!-- (C1-2) BODY -->
-      <div class="bg-white border p-4">
-        <h5 class="mb-4">AD BODY</h5>
+      <div class="bg-white border p-4 mb-3">
+        <h5 class="mb-3">AD BODY</h5>
         <textarea id="cla_text" class="form-control"><?=isset($ad)?$ad["cla_text"]:""?></textarea>
       </div>
     </div>
@@ -60,9 +60,9 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
     <!-- (C2) RIGHT -->
     <div class="col-md-5">
       <!-- (C2-1) IMAGES -->
-      <div class="bg-white border p-4 mb-4">
+      <div class="bg-white border p-4 mb-3">
         <h5>AD IMAGES</h5>
-        <div class="mb-4">(click on existing image to remove)</div>
+        <div class="mb-3">(click on existing image to remove)</div>
 
         <?php for ($i=1; $i<=CLA_IMAGES; $i++) { ?>
         <div id="cla_img_<?=$i?>">
@@ -79,17 +79,17 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       </div>
 
       <!-- (C2-2) IMAGES -->
-      <div class="bg-white border p-4">
-        <h5 class="mb-4">CONTACT PERSON</h5>
+      <div class="bg-white border p-4 mb-3">
+        <h5 class="mb-3">CONTACT PERSON</h5>
 
-        <div class="input-group mb-4">
+        <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">person</span>
           </div>
           <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>" placeholder="Name"/>
         </div>
 
-        <div class="input-group mb-4">
+        <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">email</span>
           </div>
@@ -107,7 +107,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
   </div>
 
   <!-- (C3) BOTTOM -->
-  <div class="row"><div class="col py-4">
+  <div class="row"><div class="col">
     <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="cb.page(1)"/>
     <input type="submit" class="col btn btn-primary btn-lg" value="Save"/>
   </div></div>

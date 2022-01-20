@@ -4,7 +4,7 @@ $users = $_CORE->autoCall("Users", "getAll");
 
 // (B) DRAW USERS LIST
 if (is_array($users["data"])) { foreach ($users["data"] as $id=>$u) { ?>
-<div class="d-flex align-items-center p-2">
+<div class="d-flex align-items-center border p-2">
   <div class="flex-grow-1">
     <strong><?=$u["user_name"]?></strong><br>
     <small><?=$u["user_email"]?></small>
@@ -19,7 +19,7 @@ if (is_array($users["data"])) { foreach ($users["data"] as $id=>$u) { ?>
   </div>
 </div>
 <?php }} else { ?>
-<div class="d-flex align-items-center p-2">No users found.</div>
+<div class="d-flex align-items-center border p-2">No users found.</div>
 <?php }
 
 // (C) PAGINATION

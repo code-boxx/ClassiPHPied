@@ -3,7 +3,7 @@
 $ads = $_CORE->autoCall("Classified", "getAll");
 // (B) DRAW CLASSIFIEDS LIST
 if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
-<div class="d-flex align-items-center p-2">
+<div class="d-flex align-items-center border p-2">
   <div class="flex-grow-1">
     <strong><?=$ad["cla_title"]?></strong><br>
     <small class="text-secondary">
@@ -31,7 +31,7 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
   </div>
 </div>
 <?php }} else { ?>
-<div class="d-flex align-items-center p-2">No classifieds found.</div>
+<div class="d-flex align-items-center border p-2">No classifieds found.</div>
 <?php }
 
 // (C) PAGINATION

@@ -33,7 +33,7 @@ ini_set("log_errors", 0);
 define("ERR_SHOW", true);
 
 // (D) JSON WEB TOKEN
-define("JWT_SECRET", "OnWI4_fZgzKzI~IwZN1-IZ7mhu1qY5!BlkUjc0CvVNM1k-Xc"); // CHANGED BY INSTALLER
+define("JWT_SECRET", "R7tkNlEh5bSkSowRgG.PcTvVZMM~uv_vbcsquu!3sIAHeWGK"); // CHANGED BY INSTALLER
 define("JWT_ISSUER", "localhost"); // CHANGED BY INSTALLER
 define("JWT_ALGO", "HS256");
 define("JWT_EXPIRE", 0); // in seconds, 0 for none
@@ -53,10 +53,3 @@ define("PATH_API", PATH_BASE . "api" . DIRECTORY_SEPARATOR);
 define("PATH_ASSETS", PATH_BASE . "assets" . DIRECTORY_SEPARATOR);
 define("PATH_UPLOADS", PATH_ASSETS . "uploads" . DIRECTORY_SEPARATOR);
 define("PATH_PAGES", PATH_BASE . "pages" . DIRECTORY_SEPARATOR);
-
-// (G) EMAIL - ENABLE IF USING MAIL MODULE
-// define("EMAIL_FROM", "sys@core-boxx.com");
-
-// (H) MISC
-define("PAGE_PER", 20); // 20 entries per page by default
-define("CLA_IMAGES", 3); // max number of images per ad

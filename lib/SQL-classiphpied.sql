@@ -1,3 +1,10 @@
+CREATE TABLE `options` (
+  `option_name` varchar(255) NOT NULL,
+  `option_description` varchar(255) DEFAULT NULL,
+  `option_value` varchar(255) NOT NULL,
+  `option_group` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE `categories` (
   `cat_id` bigint(20) NOT NULL,
   `cat_name` varchar(255) NOT NULL,
@@ -33,6 +40,10 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `options`
+  ADD PRIMARY KEY (`option_name`),
+  ADD KEY `option_group` (`option_group`);
+
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`),
   ADD KEY `cat_name` (`cat_name`),
@@ -45,6 +56,7 @@ ALTER TABLE `classifieds`
   ADD KEY `cla_email` (`cla_email`),
   ADD KEY `cla_person` (`cla_person`),
   ADD KEY `cla_summary` (`cla_summary`);
+
 ALTER TABLE `classifieds` ADD FULLTEXT KEY `cla_text` (`cla_text`);
 
 ALTER TABLE `cla_images`
@@ -66,3 +78,8 @@ ALTER TABLE `classifieds`
 
 ALTER TABLE `users`
   MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+INSERT INTO `options` (`option_name`, `option_description`, `option_value`, `option_group`) VALUES
+  ('EMAIL_FROM', 'System email from.', 'sys@site.com', 1),
+  ('PAGE_PER', 'Number of entries per page.', '20', 1),
+  ('CLA_IMAGES', 'Max images per ad.', '3', 1);

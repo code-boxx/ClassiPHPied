@@ -110,22 +110,21 @@
           <img src="<?=HOST_ASSETS?>favicon.png" loading="lazy" width="32" height="32"/>
         </a>
 
-        <!-- (C2-2) LEFT MENU ITEMS @TODO - ADD YOUR OWN ITEMS
+        <!-- (C2-2) LEFT MENU ITEMS -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="<?=HOST_BASE?>about">
-              <span class="mi mi-smol">featured_play_list</span> About
+            <a class="nav-link" href="<?=HOST_BASE?>page">
+              <span class="mi mi-smol">featured_play_list</span> ADD YOUR PAGES
             </a>
           </li>
         </ul>
-        -->
       </div>
 
       <?php if (isset($_SESS["user"])) { ?>
       <!-- (C3) RIGHT ITEMS -->
       <div class="d-flex align-items-center">
         <!-- (C3-1) TO FRONT END -->
-        <a class="btn btn-danger btn-sm mi me-2" href="<?=HOST_ADMIN_BASE?>">
+        <a class="btn btn-sm mi text-white" href="<?=HOST_ADMIN_BASE?>">
           compare_arrows
         </a>
       </div>
