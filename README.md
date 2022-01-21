@@ -27,6 +27,12 @@ Visit https://code-boxx.com/classiphpied-php-classified-system for the documenta
 <br><br>
 
 
+## UPDATING
+* If your existing copy has an `options` table - Just override all the existing files and access `index.php`. The installer will take care of database updates (if any).
+* If not – Manually import the `options` table from `SQL-classiphpied.sql`, create a `CLAPHP_VER` entry with value of `0` and group `0`. Thereafter, just copy the new files and let the installer do the magic.
+<br><br>
+
+
 ## LICENSE
 Copyright by Code Boxx
 
