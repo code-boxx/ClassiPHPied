@@ -19,14 +19,14 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
     </small>
   </div>
   <div>
-    <button class="btn btn-danger btn-sm" onclick="cla.del(<?=$id?>)">
-      <span class="mi">delete</span>
+    <button class="btn btn-danger btn-sm mi" onclick="cla.del(<?=$id?>)">
+      delete
     </button>
-    <a class="btn btn-primary btn-sm" target="_blank" href="<?=HOST_BASE?>show/?id=<?=$id?>">
-      <span class="mi">search</span>
+    <a class="btn btn-primary btn-sm mi" target="_blank" href="<?=HOST_BASE?>show/?id=<?=$id?>">
+      search
     </a>
-    <button class="btn btn-primary btn-sm" onclick="cla.addEdit(<?=$id?>)">
-      <span class="mi">edit</span>
+    <button class="btn btn-primary btn-sm mi" onclick="cla.addEdit(<?=$id?>)">
+      edit
     </button>
   </div>
 </div>

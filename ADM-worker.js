@@ -15,11 +15,12 @@ cFiles = [
   "assets/ADM-cb.js",
   "assets/maticon.woff2",
   // (A4) PAGES
-  "assets/ADM-images.css",
-  "assets/ADM-classified.js",
   "assets/ADM-category.js",
+  "assets/ADM-classified.js",
+  "assets/ADM-images.css",
   "assets/ADM-images.js",
   "assets/ADM-login.js",
+  "assets/ADM-settings.js",
   "assets/ADM-users.js"
 ];
 

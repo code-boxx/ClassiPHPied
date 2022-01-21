@@ -10,11 +10,11 @@ if (is_array($cat["data"])) { foreach ($cat["data"] as $id=>$c) { ?>
     <small><?=$c["cat_desc"]?></small>
   </div>
   <div>
-    <button class="btn btn-danger btn-sm" onclick="cat.del(<?=$id?>)">
-      <span class="mi">delete</span>
+    <button class="btn btn-danger btn-sm mi" onclick="cat.del(<?=$id?>)">
+      delete
     </button>
-    <button class="btn btn-primary btn-sm" onclick="cat.addEdit(<?=$id?>)">
-      <span class="mi">edit</span>
+    <button class="btn btn-primary btn-sm mi" onclick="cat.addEdit(<?=$id?>)">
+      edit
     </button>
   </div>
 </div>

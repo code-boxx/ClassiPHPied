@@ -33,7 +33,7 @@ ini_set("log_errors", 0);
 define("ERR_SHOW", true);
 
 // (D) JSON WEB TOKEN
-define("JWT_SECRET", "R7tkNlEh5bSkSowRgG.PcTvVZMM~uv_vbcsquu!3sIAHeWGK"); // CHANGED BY INSTALLER
+define("JWT_SECRET", "g_K7qNu1j-tKKK48cCdeb0XgMp2.pLmw~LoL51~gQVmQmzft"); // CHANGED BY INSTALLER
 define("JWT_ISSUER", "localhost"); // CHANGED BY INSTALLER
 define("JWT_ALGO", "HS256");
 define("JWT_EXPIRE", 0); // in seconds, 0 for none

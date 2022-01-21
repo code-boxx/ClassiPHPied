@@ -10,8 +10,8 @@ require PATH_PAGES . "TEMPLATE-atop.php"; ?>
   <input type="file" id="img-up" class="form-control"
          accept="image/jpeg, image/gif, image/webp, image/png"
          multiple required/>
-  <button class="btn btn-primary" type="submit">
-    <span class="mi">upload</span>
+  <button class="btn btn-primary mi" type="submit">
+    upload
   </button>
 </form>
 

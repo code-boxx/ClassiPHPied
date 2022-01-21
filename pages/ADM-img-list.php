@@ -5,16 +5,12 @@ $images = $_CORE->autoCall("Images", "getAll");
 // (B) PICKER MODE
 $pick = isset($_POST["pick"]);
 if ($pick) { ?>
-<nav class="navbar cb-grey mb-4">
-<div class="container-fluid">
-  <h4>Choose an image</h4>
-  <div class="d-flex">
-    <button class="btn btn-danger" onclick="cb.page(2)">
-      <span class="mi">reply</span>
-    </button>
-  </div>
+<div class="d-flex mb-3">
+  <h3 class="flex-grow-1">CHOOSE AN IMAGE</h3>
+  <button class="btn btn-danger mi" onclick="cb.page(2)">
+    reply
+  </button>
 </div>
-</nav>
 <?php }
 
 // (B) LIST IMAGES
@@ -29,11 +25,11 @@ if (count($images["data"])>0) { foreach ($images["data"] as $i) { ?>
     <?php } ?>
     <?php if (!$pick) { ?>
     <div class="btn-group mt-2" role="group">
-      <button class="btn btn-danger" onclick="img.del('<?=$i?>')">
-        <span class="mi">delete</span>
+      <button class="btn btn-danger mi" onclick="img.del('<?=$i?>')">
+        delete
       </button>
-      <button class="btn btn-primary" onclick="img.copy('<?=$i?>')">
-        <span class="mi">link</span>
+      <button class="btn btn-primary mi" onclick="img.copy('<?=$i?>')">
+        link
       </button>
     </div>
     <?php } ?>
