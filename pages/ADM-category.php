@@ -1,12 +1,12 @@
 <?php
-$_PMETA = ["load" => [
-  ["s", HOST_ASSETS."ADM-category.js", "defer"]
-]];
-require PATH_PAGES . "TEMPLATE-atop.php"; ?>
-<!-- (A) SEARCH BAR -->
+$_PMETA = ["load" => [["s", HOST_ASSETS."ADM-category.js", "defer"]]];
+require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
+<!-- (A) HEADER -->
 <h3 class="mb-3">MANAGE CATEGORIES</h3>
-<form class="d-flex align-items-stretch bg-white border mb-3 p-2" onsubmit="return cat.search()">
-  <input type="text" id="cat-search" placeholder="Search" class="form-control form-control-sm"/>
+
+<!-- (B) SEARCH BAR -->
+<form class="d-flex align-items-stretch head border mb-3 p-2" onsubmit="return cat.search()">
+  <input type="text" id="cat-search" placeholder="Search" class="form-control form-control-sm">
   <button type="submit" class="btn btn-primary me-1 mi">
     search
   </button>
@@ -16,5 +16,5 @@ require PATH_PAGES . "TEMPLATE-atop.php"; ?>
 </form>
 
 <!-- (B) CATEGORIES LIST -->
-<div id="cat-list" class="bg-white zebra my-4"></div>
-<?php require PATH_PAGES . "TEMPLATE-abottom.php"; ?>
+<div id="cat-list" class="zebra my-4"></div>
+<?php require PATH_PAGES . "TEMPLATE-ADM-bottom.php"; ?>

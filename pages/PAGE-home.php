@@ -5,9 +5,9 @@ $_PMETA = ["load" => [
 ]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (A) HEADER -->
-<nav class="bg-white border d-flex align-items-center p-3 mb-3">
+<nav class="d-flex align-items-center p-3 mb-3">
   <h3 class="flex-grow-1">LISTINGS</h3>
-  <div class="col"><select id="cla-cat" class="form-control" onchange="cla.cat()">
+  <select id="cla-cat" class="w-auto form-select" onchange="cla.cat()">
     <option value="">All</option>
     <?php
     $_CORE->load("Category");
@@ -16,7 +16,7 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
       printf("<option value='%u'>%s</option>", $cid, $c["cat_name"]);
     }}
     ?>
-  </select></div>
+  </select>
 </nav>
 
 <!-- (B) CLASSIFIEDS -->

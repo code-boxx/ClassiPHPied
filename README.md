@@ -1,7 +1,6 @@
 ## CLASSIPHPIED
-ClassiPHPied is a very simple PHP Classified Ads System. Yes, this is not a “we have a load of features, but you won’t even use half of them” kind of system. This is just a basic one, with the raw essentials to you started quickly – Be it for a small business, or expanding on top of it.
+ClassiPHPied is a very simple PHP Classified Ads System. Yes, this is not a "we have a load of features, but you won't even use half of them" kind of system. This is just a basic one, with the raw essentials to you started quickly – Be it for a small business, or expanding on top of it.
 <br><br>
-
 
 ## SCREENSHOTS
 <p float="left">
@@ -9,29 +8,31 @@ ClassiPHPied is a very simple PHP Classified Ads System. Yes, this is not a “w
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-2.jpg">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-3.jpg">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-4.jpg">
-</p><br>
-
-
-## INSTALLATION & DOCUMENTATION
-Just access `index.php` in your browser and walk through the installer. The admin panel can be accessed at `http://your-site.com/admin`.
-
-Visit https://code-boxx.com/classiphpied-php-classified-system for the documentation.
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-5.jpg">
+</p>
 <br><br>
-
 
 ## REQUIREMENTS
-1) Not extensively tested, but should work with at least PHP 8.0.
-2) PHP MYSQL PDO extension.
-3) Apache server with MOD REWRITE enabled.
-4) "Grade A" browser.
+1) LAMP/WAMP/MAMP/XAMPP
+2) Apache Mod Rewrite
+3) PHP MYSQL PDO Extension
+4) At least PHP 8.0
 <br><br>
 
-
-## UPDATING
-* If your existing copy has an `options` table - Just override all the existing files and access `index.php`. The installer will take care of database updates (if any).
-* If not – Manually import the `options` table from `SQL-classiphpied.sql`, create a `CLAPHP_VER` entry with value of `0` and group `0`. Thereafter, just copy the new files and let the installer do the magic.
+## INSTALLATION
+Just access `http://your-site.com/` in your browser and walk through the installer. The admin panel can be accessed from `http://your-site.com/admin`.
 <br><br>
 
+## FEATURES
+1) Users management.
+2) Ads management.
+3) Progressive web app.
+<br><br>
+
+## DOCUMENTATION & FRAMEWORKS
+1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/) and [Core Boxx](https://code-boxx.com/core-boxx-php-rapid-development-framework/).
+2) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
+<br><br>
 
 ## LICENSE
 Copyright by Code Boxx
@@ -53,10 +54,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-<br><br>
-
-
-## CREDITS/PACKAGES USED
-1) https://getbootstrap.com/
-2) https://www.tiny.cloud/
-3) https://code-boxx.com/core-boxx-php-rapid-development-framework/

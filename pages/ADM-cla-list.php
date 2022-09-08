@@ -1,8 +1,9 @@
 <?php
 // (A) GET CLASSIFIED ADS
 $ads = $_CORE->autoCall("Classified", "getAll");
+
 // (B) DRAW CLASSIFIEDS LIST
-if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
+if (is_array($ads)) { foreach ($ads as $id=>$ad) { ?>
 <div class="d-flex align-items-center border p-2">
   <div class="flex-grow-1">
     <strong><?=$ad["cla_title"]?></strong><br>
@@ -22,7 +23,7 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
     <button class="btn btn-danger btn-sm mi" onclick="cla.del(<?=$id?>)">
       delete
     </button>
-    <a class="btn btn-primary btn-sm mi" target="_blank" href="<?=HOST_BASE?>show/?id=<?=$id?>">
+    <a class="btn btn-primary btn-sm mi" target="_blank" href="<?=HOST_BASE?>show/<?=$id?>">
       search
     </a>
     <button class="btn btn-primary btn-sm mi" onclick="cla.addEdit(<?=$id?>)">
@@ -30,10 +31,8 @@ if (is_array($ads["data"])) { foreach ($ads["data"] as $id=>$ad) { ?>
     </button>
   </div>
 </div>
-<?php }} else { ?>
-<div class="d-flex align-items-center border p-2">No classifieds found.</div>
-<?php }
+<?php }} else { echo "No classifieds found."; }
 
 // (C) PAGINATION
 $_CORE->load("Page");
-$_CORE->Page->draw($ads["page"], "cla.goToPage");
+$_CORE->Page->draw("cla.goToPage");

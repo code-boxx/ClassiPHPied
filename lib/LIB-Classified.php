@@ -103,7 +103,7 @@ class Classified extends Core {
 
     // (D2) PAGINATION
     if ($page != null) {
-      $pgn = $this->core->paginator(
+      $this->core->paginator(
         $this->DB->fetchCol("SELECT COUNT(*) $sql", $data), $page
       );
     }
@@ -111,11 +111,8 @@ class Classified extends Core {
     // (D3) RESULTS
     $sql = "SELECT `cla_id`, `cla_title`, `cla_summary`, `cla_date`, `cla_person`, `cla_email`, `cla_tel`
             $sql ORDER BY `cla_date` DESC";
-    if ($page != null) { $sql .= " LIMIT {$pgn["x"]}, {$pgn["y"]}"; }
-    $ads = $this->DB->fetchAll($sql, $data, "cla_id");
-    return $page != null
-     ? ["data" => $ads, "page" => $pgn]
-     : $ads ;
+    if ($page != null) { $sql .= $this->core->page["lim"]; }
+    return $this->DB->fetchAll($sql, $data, "cla_id");
   }
 
   // (E) GET ALL BY CATEGORY
@@ -128,7 +125,7 @@ class Classified extends Core {
       : "SELECT COUNT(*) FROM `cla_to_cat` WHERE `cat_id`=?";
     $data = $id===null || $id=="" ? null : [$id];
     if ($page != null) {
-      $pgn = $this->core->paginator(
+      $this->core->paginator(
         $this->DB->fetchCol($sql, $data), $page
       );
     }
@@ -144,12 +141,8 @@ class Classified extends Core {
       $sql .= " WHERE cc.`cat_id`=?";
       $data = [$id];
     }
-    $sql .= " ORDER BY c.`cla_date` DESC LIMIT {$pgn["x"]}, {$pgn["y"]}";
-    $ads = $this->DB->fetchAll($sql, $data, "cla_id");
-
-    // (E3) RESULTS
-    return $page != null
-     ? ["data" => $ads, "page" => $pgn]
-     : $ads ;
+    $sql .= " ORDER BY c.`cla_date` DESC";
+    if ($page != null) { $sql .= $this->core->page["lim"]; }
+    return $this->DB->fetchAll($sql, $data, "cla_id");
   }
 }

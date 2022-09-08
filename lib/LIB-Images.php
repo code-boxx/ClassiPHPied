@@ -5,19 +5,19 @@ class Images extends Core {
   function getAll ($page=1) {
     // (A1) IMAGES & PAGINATION
     $images = glob(PATH_UPLOADS . "*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
-    $pgn = $this->core->paginator(count($images), $page);
-
+    $this->core->paginator(count($images), $page);
+    
     // (A2) RESHUFFLE + BASENAME ONLY
-    if ($pgn["entries"]!=0) {
+    if ($this->core->page["entries"]!=0) {
       usort($images, function($file1, $file2) {
         return filemtime($file2) <=> filemtime($file1);
       });
-      $images = array_slice($images, $pgn["x"], $pgn["y"]);
+      $images = array_slice($images, $this->core->page["x"], $this->core->page["y"]);
       foreach ($images as $k=>$i) { $images[$k] = basename($i); }
     }
 
     // (A3) RESULTS
-    return ["data" => $images, "page" => $pgn];
+    return $images;
   }
 
   // (B) UPLOAD FILE

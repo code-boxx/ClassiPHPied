@@ -16,13 +16,13 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       <!-- (C1-1) SUMMARY -->
       <div class="bg-white border p-4 mb-3">
         <h5 class="mb-3">AD SUMMARY</h5>
-        <input type="hidden" id="cla_id" value="<?=isset($ad)?$ad["cla_id"]:""?>"/>
+        <input type="hidden" id="cla_id" value="<?=isset($ad)?$ad["cla_id"]:""?>">
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">category</span>
           </div>
-          <select class="form-control" id="cla_cat">
+          <select class="form-select" id="cla_cat">
             <option value="">No Category</option>
             <?php
             if (is_array($cat)) { foreach ($cat as $cid=>$c) {
@@ -39,14 +39,14 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
           <div class="input-group-prepend">
             <span class="input-group-text mi">title</span>
           </div>
-          <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>" placeholder="Title"/>
+          <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>" placeholder="Title">
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text mi">summarize</span>
           </div>
-          <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>" placeholder="Short Summary"/>
+          <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>" placeholder="Short Summary">
         </div>
       </div>
 
@@ -54,6 +54,32 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       <div class="bg-white border p-4 mb-3">
         <h5 class="mb-3">AD BODY</h5>
         <textarea id="cla_text" class="form-control"><?=isset($ad)?$ad["cla_text"]:""?></textarea>
+      </div>
+
+      <!-- (C1-3) CONTACT PERSON -->
+      <div class="bg-white border p-4 mb-3">
+        <h5 class="mb-3">CONTACT PERSON</h5>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text mi">person</span>
+          </div>
+          <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>" placeholder="Name">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text mi">email</span>
+          </div>
+          <input type="email" class="form-control" id="cla_email" value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text mi">phone</span>
+          </div>
+          <input type="text" class="form-control" id="cla_tel" value="<?=isset($ad)?$ad["cla_tel"]:""?>" placeholder="Telephone">
+        </div>
       </div>
     </div>
 
@@ -68,7 +94,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
         <div id="cla_img_<?=$i?>">
           <?php if (isset($ad["images"][$i])) { ?>
             <img src="<?=HOST_UPLOADS . $ad["images"][$i]["img_file"]?>"
-                 class="img-thumbnail cla-img" onclick="img.remove(<?=$i?>)"/>
+                 class="thumb cla-img" onclick="img.remove(<?=$i?>)">
           <?php } else { ?>
           <button class="cla-img btn btn-primary btn-sm w-100 mb-3" type="button" onclick="img.init(<?=$i?>)">
             Choose an image
@@ -77,38 +103,12 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
         </div>
         <?php } ?>
       </div>
-
-      <!-- (C2-2) IMAGES -->
-      <div class="bg-white border p-4 mb-3">
-        <h5 class="mb-3">CONTACT PERSON</h5>
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">person</span>
-          </div>
-          <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>" placeholder="Name"/>
-        </div>
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">email</span>
-          </div>
-          <input type="email" class="form-control" id="cla_email" value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email"/>
-        </div>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">phone</span>
-          </div>
-          <input type="text" class="form-control" id="cla_tel" value="<?=isset($ad)?$ad["cla_tel"]:""?>" placeholder="Telephone"/>
-        </div>
-      </div>
     </div>
   </div>
 
   <!-- (C3) BOTTOM -->
   <div class="row"><div class="col">
-    <input type="button" class="col btn btn-danger btn-lg" value="Back" onclick="cb.page(1)"/>
-    <input type="submit" class="col btn btn-primary btn-lg" value="Save"/>
+    <input type="button" class="col btn btn-danger" value="Back" onclick="cb.page(0)">
+    <input type="submit" class="col btn btn-primary" value="Save">
   </div></div>
 </form>

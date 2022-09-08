@@ -1,18 +1,28 @@
 // (A) FILES TO CACHE
 const cName = "classiphpied",
 cFiles = [
-  // (A1) COMMON SCRIPTS
+  // (A1) BOOTSTRAP
   "assets/bootstrap.bundle.min.js",
+  "assets/bootstrap.bundle.min.js.map",
   "assets/bootstrap.min.css",
-  "assets/PAGE-cb.js",
-  // (A2) FONT + ICONS + IMAGES
-  "assets/maticon.woff2",
+  "assets/bootstrap.min.css.map",
+  // (A2) ICONS + IMAGES
   "assets/favicon.png",
   "assets/ico-512.png",
-  "assets/noimg.jpg",
-  // (A3) PAGES
+  "assets/book.jpg",
+  // (A3) COMMON INTERFACE
+  "assets/PAGE-cb.js",
+  "assets/maticon.woff2",
+  // (A4) PAGES
   "assets/PAGE-classified.css",
-  "assets/PAGE-classified.js"
+  "assets/PAGE-classified.js",
+  "assets/ADM-category.js",
+  "assets/ADM-classified.js",
+  "assets/ADM-images.css",
+  "assets/ADM-images.js",
+  "assets/ADM-login.js",
+  "assets/ADM-settings.js",
+  "assets/ADM-users.js"
 ];
 
 // (B) CREATE/INSTALL CACHE

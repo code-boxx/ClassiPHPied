@@ -1,12 +1,11 @@
 var cla = {
   // (A) SHOW ALL CLASSIFIED ADS
-  pg : 1, // CURRENT PAGE
-  find : "", // CURRENT SEARCH
+  pg : 1, // current page
+  find : "", // current search
   list : () =>  {
-    cb.page(1);
+    cb.page(0);
     cb.load({
-      page : "cla/list",
-      target : "cla-list",
+      page : "admin/cla/list", target : "cla-list",
       data : {
         page : cla.pg,
         search : cla.find
@@ -33,11 +32,10 @@ var cla = {
   // id : classified ID, for edit only
   addEdit : (id) => {
     cb.load({
-      page : "cla/form",
-      target : "cb-page-2",
+      page : "admin/cla/form", target : "cb-page-2",
       data : { id : id ? id : "" },
       onload : () => {
-        cb.page(2);
+        cb.page(1);
         tinymce.remove();
         tinymce.init({
           selector : "#cla_text",
@@ -85,8 +83,7 @@ var cla = {
 
     // (E3) AJAX
     cb.api({
-      mod : "classified",
-      req : "save",
+      mod : "classified", req : "save",
       data : data,
       passmsg : "Classified Ad Saved",
       onpass : cla.list
@@ -98,29 +95,24 @@ var cla = {
   //  id : int, classified ID
   //  confirm : boolean, confirmed delete
   del : (id, confirm) => {
-    if (confirm) {
+    cb.modal("Please confirm", "Delete this entry?", () => {
       cb.api({
-        mod : "classified",
-        req : "del",
+        mod : "classified", req : "del",
         data : { id: id },
         passmsg : "Classified Ad Deleted",
         onpass : cla.list
       });
-    } else {
-      cb.modal("Please confirm", "Delete this entry?", () => {
-        cla.del(id, true);
-      });
-    }
+    });
   }
 };
 
 var img = {
   // (A) INITIALIZE & SETUP IMAGE PICKER
-  loaded : false, // ALREADY INITIALIZED?
-  slot : 0, // CURRENT SELECTED SLOT
-  init : (slot) => {
+  loaded : false, // already initialized?
+  slot : 0, // current selected slot
+  init : slot => {
     img.slot = slot;
-    cb.page(3);
+    cb.page(2);
     if (!img.loaded) {
       document.getElementById("cb-page-3").innerHTML = '<div id="img-list" class="row"></div>';
       img.loaded = true;
@@ -132,8 +124,7 @@ var img = {
   pg : 1, // CURRENT PAGE
   list : () => {
     cb.load({
-      page : "img/list",
-      target : "img-list",
+      page : "admin/img/list", target : "img-list",
       data : {
         page : img.pg,
         pick : true,
@@ -151,14 +142,14 @@ var img = {
   // (C) PICK IMAGE
   pick : (i) => {
     // (C1) BACK TO FORM
-    cb.page(2);
+    cb.page(1);
 
     // (C2) CREATE NEW IMAGE TAG
     var slot = img.slot,
         wrap = document.getElementById("cla_img_" + img.slot),
         nimg = document.createElement("img");
     nimg.src = cbhost.uploads + i;
-    nimg.className = "img-thumbnail cla-img";
+    nimg.className = "thumb cla-img";
     nimg.onclick = () => { img.remove(slot); };
     wrap.innerHTML = "";
     wrap.appendChild(nimg);
@@ -166,7 +157,7 @@ var img = {
 
   // (D) REMOVE IMAGE
   //  slot : image slot number
-  remove : (slot) => {
+  remove : slot => {
     var wrap = document.getElementById("cla_img_" + slot),
         nbtn = document.createElement("button");
     nbtn.className = "cla-img btn btn-primary btn-sm w-100 mb-3";

@@ -1,17 +1,20 @@
 <?php
-// (A) GET CLASSIFIED & OUTPUT HTML
-$_CORE->load("Classified");
-$ad = $_CORE->Classified->get($_GET["id"]);
-require PATH_PAGES . "TEMPLATE-top.php";
+// (A) EXTRACT ID
+$_PATH = explode("/", rtrim($_PATH, "/"));
+$valid = count($_PATH) == 2;
+if ($valid) { $valid = is_numeric($_PATH[1]); }
 
-// (B) ERROR
-if (!is_array($ad)) { ?>
-<h1 class="text-danger">ERROR</h1>
-<p>Invalid listing</p>
+// (B) GET CLASSIFIED
+if ($valid) {
+  $_CORE->load("Classified");
+  $ad = $_CORE->Classified->get($_PATH[1]);
+  $valid = is_array($ad);
+}
 
-<?php
-// (C) DISPLAY LISTING
-} else { ?>
+// (C) OUTPUT HTML
+if (!$valid) { require PATH_PAGES . "PAGE-404.php"; exit(); }
+$_PMETA = ["load" => [["l", HOST_ASSETS."PAGE-classified.css"]]];
+require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <div class="bg-white border p-4 mb-4">
   <!-- (C1) TITLE & DATE -->
   <h1><?=$ad["cla_title"]?></h1>
@@ -24,8 +27,11 @@ if (!is_array($ad)) { ?>
   <!-- (C3) CONTACT PERSON -->
   <h4 class="mt-5">Contact Person</h4>
   <div>Name: <?=$ad["cla_person"]?></div>
-  <div>Email: <?=$ad["cla_email"]?></div>
-  <div>Tel: <?=$ad["cla_tel"]?></div>
+  <?php if ($ad["cla_email"]) { ?>
+  <div>Email: <a href="mailto:<?=$ad["cla_email"]?>"><?=$ad["cla_email"]?></a></div>
+  <?php } if ($ad["cla_tel"]) { ?>
+  <div>Tel: <a href="tel:<?=$ad["cla_tel"]?>"><?=$ad["cla_tel"]?></a></div>
+  <?php } ?>
 
   <!-- (C4) IMAGES -->
   <?php if (is_array($ad["images"])) { ?>
@@ -34,7 +40,7 @@ if (!is_array($ad)) { ?>
     <div class="carousel-inner">
       <?php $first = true; foreach ($ad["images"] as $img) { ?>
       <div class="carousel-item<?=$first?" active":""?>">
-        <img src="<?=HOST_UPLOADS . $img["img_file"]?>" class="d-block w-100">
+        <img src="<?=HOST_UPLOADS . $img["img_file"]?>" class="caroimg">
       </div>
       <?php $first = false; } ?>
     </div>
@@ -47,6 +53,6 @@ if (!is_array($ad)) { ?>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <?php }} ?>
+  <?php } ?>
 </div>
 <?php require PATH_PAGES . "TEMPLATE-bottom.php"; ?>

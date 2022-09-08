@@ -2,9 +2,9 @@ var img = {
   // (A) SHOW ALL IMAGES
   pg : 1, // CURRENT PAGE
   list : () => {
-    cb.page(1);
+    cb.page(0);
     cb.load({
-      page : "img/list",
+      page : "admin/img/list",
       target : "img-list",
       data : { page : img.pg }
     });
@@ -30,20 +30,15 @@ var img = {
   // (D) DELETE IMAGE
   //  i : image file
   //  confirm : boolean, confirmed delete
-  del : (i, confirm) => {
-    if (confirm) {
+  del : (i) => {
+    cb.modal("Please confirm", "Delete image?", () => {
       cb.api({
-        mod : "images",
-        req : "del",
+        mod : "images", req : "del",
         data : { file: i },
         passmsg : "Image Deleted",
         onpass : img.list
       });
-    } else {
-      cb.modal("Please confirm", "Delete image?", () => {
-        img.del(i, true);
-      });
-    }
+    });
   },
 
   // (E) UPLOAD IMAGE (ONE AT A TIME)
@@ -68,8 +63,7 @@ var img = {
     // (E2) PROCEED AJAX UPLOAD
     else {
       cb.api({
-        mod : "images",
-        req : "upload",
+        mod : "images", req : "upload",
         data : { "upfile": img.upqueue.list[img.upqueue.now] },
         loading : false,
         passmsg : "Image Uploaded",

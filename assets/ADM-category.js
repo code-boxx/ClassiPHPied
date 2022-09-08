@@ -1,12 +1,11 @@
 var cat = {
   // (A) SHOW ALL CATEGORIES
-  pg : 1, // CURRENT PAGE
-  find : "", // CURRENT SEARCH
+  pg : 1, // current page
+  find : "", // current search
   list : () => {
-    cb.page(1);
+    cb.page(0);
     cb.load({
-      page : "cat/list",
-      target : "cat-list",
+      page : "admin/cat/list", target : "cat-list",
       data : {
         page : cat.pg,
         search : cat.find
@@ -33,10 +32,9 @@ var cat = {
   // id : category ID, for edit only
   addEdit : (id) => {
     cb.load({
-      page : "cat/form",
-      target : "cb-page-2",
+      page : "admin/cat/form", target : "cb-page-2",
       data : { id : id ? id : "" },
-      onload : () => { cb.page(2); }
+      onload : () => { cb.page(1); }
     });
   },
 
@@ -49,10 +47,10 @@ var cat = {
     };
     var id = document.getElementById("cat_id").value;
     if (id!="") { data.id = id; }
+
     // (E2) AJAX
     cb.api({
-      mod : "category",
-      req : "save",
+      mod : "category", req : "save",
       data : data,
       passmsg : "Category Saved",
       onpass : cat.list
@@ -64,19 +62,14 @@ var cat = {
   //  id : int, category ID
   //  confirm : boolean, confirmed delete
   del : (id, confirm) => {
-    if (confirm) {
+    cb.modal("Please confirm", "Delete category?", () => {
       cb.api({
-        mod : "category",
-        req : "del",
-        data : { id: id },
+        mod : "category", req : "del",
+        data : { id : id },
         passmsg : "Category Deleted",
         onpass : cat.list
       });
-    } else {
-      cb.modal("Please confirm", "Delete category?", () => {
-        cat.del(id, true);
-      });
-    }
+    });
   }
 };
 window.addEventListener("load", cat.list);
