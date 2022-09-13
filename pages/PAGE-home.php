@@ -5,8 +5,8 @@ $_PMETA = ["load" => [
 ]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (A) HEADER -->
-<nav class="d-flex align-items-center p-3 mb-3">
-  <h3 class="flex-grow-1">LISTINGS</h3>
+<nav class="bg-primary text-white d-flex align-items-center p-3 mb-3">
+  <div class="flex-grow-1 h4 mb-0">CLASSIFIED ADS</div>
   <select id="cla-cat" class="w-auto form-select" onchange="cla.cat()">
     <option value="">All</option>
     <?php

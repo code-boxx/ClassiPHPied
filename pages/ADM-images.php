@@ -9,9 +9,9 @@ require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 
 <!-- (B) UPLOAD BAR -->
 <form class="d-flex align-items-center head border mb-3 p-2" onsubmit="return img.upload()">
-  <input type="file" id="img-up" class="form-control" multiple required
+  <input type="file" id="img-up" class="form-control form-control-lg" multiple required
          accept="image/jpeg, image/gif, image/webp, image/png">
-  <button class="btn btn-primary mi" type="submit">
+  <button class="btn btn-primary mi ms-1" type="submit">
     upload
   </button>
 </form>

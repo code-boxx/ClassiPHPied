@@ -14,6 +14,7 @@ ini_set("display_errors", 1);
 ini_set("log_errors", 0);
 define("I_BASE", dirname(__DIR__) . DIRECTORY_SEPARATOR);
 define("I_ASSETS", I_BASE . "assets" . DIRECTORY_SEPARATOR);
+define("I_UPLOADS", I_ASSETS . "uploads" . DIRECTORY_SEPARATOR);
 define("I_LIB", I_BASE . "lib" . DIRECTORY_SEPARATOR);
 define("I_PAGES", I_BASE . "pages" . DIRECTORY_SEPARATOR);
 
@@ -84,7 +85,7 @@ if ($_PHASE == "C") {
 
   // (C5) FILES & FOLDERS - READ/WRITE PERMISSIONS
   define("I_ALL", [
-    I_BASE, I_ASSETS, I_LIB, I_PAGES,
+    I_BASE, I_ASSETS, I_UPLOADS, I_LIB, I_PAGES,
     I_LIB . "CORE-Config.php", I_BASE . "index.php"
     // @TODO - ADD MORE FILES IF NECESSARY
   ]);

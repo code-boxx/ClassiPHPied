@@ -15,13 +15,13 @@ if ($valid) {
 if (!$valid) { require PATH_PAGES . "PAGE-404.php"; exit(); }
 $_PMETA = ["load" => [["l", HOST_ASSETS."PAGE-classified.css"]]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
-<div class="bg-white border p-4 mb-4">
-  <!-- (C1) TITLE & DATE -->
-  <h1><?=$ad["cla_title"]?></h1>
-  <div>Posted on: <?=$ad["cla_date"]?></div>
+<!-- (C1) TITLE & DATE -->
+<h1><?=$ad["cla_title"]?></h1>
+<div class="mb-4">Posted on: <?=$ad["cla_date"]?></div>
 
+<div class="bg-white border p-4 mb-4">
   <!-- (C2) DETAILS -->
-  <h4 class="mt-5">Details</h4>
+  <h4>Details</h4>
   <div><?=$ad["cla_text"]?></div>
 
   <!-- (C3) CONTACT PERSON -->

@@ -11,7 +11,7 @@ require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 <!-- (B) SEARCH BAR -->
 <form class="d-flex align-items-stretch head border mb-3 p-2" onsubmit="return cla.search()">
   <input type="text" id="cla-search" placeholder="Search" class="form-control form-control-sm">
-  <button type="submit" class="btn btn-primary me-1 mi">
+  <button type="submit" class="btn btn-primary mx-1 mi">
     search
   </button>
   <button class="btn btn-primary mi" onclick="cla.addEdit()">

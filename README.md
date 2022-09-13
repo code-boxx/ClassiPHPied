@@ -1,5 +1,5 @@
 ## CLASSIPHPIED
-ClassiPHPied is a very simple PHP Classified Ads System. Yes, this is not a "we have a load of features, but you won't even use half of them" kind of system. This is just a basic one, with the raw essentials to you started quickly – Be it for a small business, or expanding on top of it.
+ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a load of features, but you won't even use half of them" kind of system. Just a basic one, with the essentials to you started quickly – Be it for a small business, or expanding on top of it.
 <br><br>
 
 ## SCREENSHOTS
