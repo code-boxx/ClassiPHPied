@@ -6,14 +6,15 @@ $list = $_CORE->autoCall("Classified", "getAllByCat");
 if (is_array($list)) { foreach ($list as $id=>$ad) { ?>
 <div class="col-lg-4 col-6"><div class="card">
   <a href="<?=HOST_BASE?>show/<?=$id?>" target="_blank">
-    <img src="<?=$ad["img_file"] ? HOST_UPLOADS . $ad["img_file"] : HOST_ASSETS . "noimg.jpg"?>" class="card-img-top thumb" loading="lazy">
+    <img src="<?=$ad["img_file"] ? HOST_UPLOADS . $ad["img_file"] : HOST_ASSETS . "noimg.jpg"?>" class="card-img-top thumb"
+         width="420" height="200" loading="lazy">
   </a>
   <div class="card-body">
-    <h5 class="card-title"><?=$ad["cla_title"]?></h5>
-    <h6 class="card-subtitle mb-2 text-primary"><?=$ad["cat_name"]?></h6>
-    <h6 class="card-subtitle mb-2 text-primary"><?=$ad["cla_date"]?></h6>
-    <p class="card-text"><?=$ad["cla_summary"]?></p>
-    <a href="<?=HOST_BASE?>show/?id=<?=$id?>" target="_blank" class="card-link">See More</a>
+    <span class="badge bg-danger mb-2"><?=$ad["cat_name"]?></span>
+    <h5 class="mb-0"><?=$ad["cla_title"]?></h5>
+    <p class="mb-3"><?=$ad["cla_summary"]?></p>
+    <small class="text-secondary"><?=$ad["cla_date"]?></small><br>
+    <a href="<?=HOST_BASE?>show/<?=$id?>" target="_blank" class="card-link">See More</a>
   </div>
 </div></div>
 <?php }} else { echo "No listings found."; }

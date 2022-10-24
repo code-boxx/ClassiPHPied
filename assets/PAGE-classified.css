@@ -1,6 +1,7 @@
 #cla-list { align-items: stretch; }
 .card { height: 100%; }
-img.thumb, img.caroimg { object-fit: cover; }
+img.thumb { object-fit: cover; }
+img.caroimg { object-fit: contain; }
 img.thumb { height: 200px; }
 img.caroimg {
   width: 100%;

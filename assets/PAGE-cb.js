@@ -82,7 +82,7 @@ var cb = {
   }},
 
   // (B5) TOGGLE SIDEBAR
-  toggle : () => { cb.hSide.classList.toggle("show"); },
+  toggle : () => cb.hSide.classList.toggle("show"),
 
   // (C) AJAX CALL
   //  url : string, target URL
@@ -153,7 +153,7 @@ var cb = {
     if (opt.nofail === undefined) { opt.nofail = false; }
 
     // (D2) ON AJAX LOAD
-    options.onpass = (res) => {
+    options.onpass = res => {
       // (D2-1) PARSE RESULTS
       try { var res = JSON.parse(res); }
       catch (err) {
@@ -213,15 +213,10 @@ var cb = {
   },
 
   // (F) SIGN OFF
-  bye : () => {
-    cb.modal("Please Confirm", "Sign off?", () => {
-      cb.api({
-        mod : "session", req : "logout",
-        passmsg : false,
-        onpass : () => { location.href = cbhost.admin + "login/"; }
-      });
-    });
-  },
+  bye : () => cb.modal("Please Confirm", "Sign off?", () => cb.api({
+    mod : "session", req : "logout", passmsg : false,
+    onpass : () => location.href = cbhost.admin + "login/"
+  })),
 
   // (G) PASSWORD/HASH STRENGTH CHECKER
   checker : hash => /^(?=.*[0-9])(?=.*[A-Z]).{8,20}$/i.test(hash)

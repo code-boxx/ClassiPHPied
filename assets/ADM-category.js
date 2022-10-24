@@ -15,7 +15,7 @@ var cat = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : (pg) => { if (pg!=cat.pg) {
+  goToPage : pg => { if (pg!=cat.pg) {
     cat.pg = pg;
     cat.list();
   }},
@@ -30,13 +30,11 @@ var cat = {
 
   // (D) SHOW ADD/EDIT DOCKET
   // id : category ID, for edit only
-  addEdit : (id) => {
-    cb.load({
-      page : "admin/cat/form", target : "cb-page-2",
-      data : { id : id ? id : "" },
-      onload : () => { cb.page(1); }
-    });
-  },
+  addEdit : id => cb.load({
+    page : "admin/cat/form", target : "cb-page-2",
+    data : { id : id ? id : "" },
+    onload : () => cb.page(1)
+  }),
 
   // (E) SAVE CATEGORY
   save : () => {
@@ -61,15 +59,11 @@ var cat = {
   // (F) DELETE CATEGORY
   //  id : int, category ID
   //  confirm : boolean, confirmed delete
-  del : (id, confirm) => {
-    cb.modal("Please confirm", "Delete category?", () => {
-      cb.api({
-        mod : "category", req : "del",
-        data : { id : id },
-        passmsg : "Category Deleted",
-        onpass : cat.list
-      });
-    });
-  }
+  del : id => cb.modal("Please confirm", "Delete category?", () => cb.api({
+    mod : "category", req : "del",
+    data : { id : id },
+    passmsg : "Category Deleted",
+    onpass : cat.list
+  }))
 };
 window.addEventListener("load", cat.list);

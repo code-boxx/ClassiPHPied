@@ -43,7 +43,7 @@
     .head{background:#ddd}.zebra .d-flex{background:#fff;margin-bottom:10px}.zebra .d-flex:nth-child(odd){background-color:#f1f1f1}.pagination{border:1px solid #d0e8ff;background:#f0f8ff}
     #cb-body,body{min-height:100vh}#cb-toggle{display:none}#cb-side{width:155px;flex-shrink:0}#cb-side a{color:#fff}#cb-side .mi{color:#6a6a6a}@media screen and (max-width:768px){#cb-toggle{display:block}#cb-side{display:none}#cb-side.show{display:block}}
     </style>
-    <script>var cbhost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
+    <script>var cbhost={base:"<?=HOST_BASE?>",basepath:"<?=HOST_BASE_PATH?>",admin:"<?=HOST_ADMIN?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
     <script defer src="<?=HOST_ASSETS?>PAGE-cb.js"></script>
 
     <!-- (A6) ADDITIONAL SCRIPTS -->
@@ -66,14 +66,14 @@
     </div>
 
     <!-- (B2) TOAST MESSAGE -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index:11">
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index:11">
       <div id="cb-toast" class="toast hide" role="alert">
         <div class="toast-header">
           <span id="cb-toast-icon" class="mi"></span>
           <strong id="cb-toast-head" class="me-auto p-1"></strong>
           <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
         </div>
-        <div id="cb-toast-body" class="toast-body"></div>
+        <div id="cb-toast-body" class="toast-body bg-light"></div>
       </div>
     </div>
 
@@ -134,12 +134,23 @@
               menu
             </button>
           </div>
-          <a class="btn btn-sm mi text-white me-2" href="<?=HOST_BASE?>">
+          <a class="btn btn-sm mi text-danger me-2" href="<?=HOST_BASE?>">
             admin_panel_settings
           </a>
-          <button class="btn btn-sm mi text-white" onclick="cb.bye()">
-            logout
-          </button>
+          <div class="dropdown">
+            <button class="btn btn-sm text-white mi" type="button" data-bs-toggle="dropdown">
+              person_outline
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+              <li class="dropdown-header">
+                <?=$_SESS["user"]["user_name"]?><br>
+                <?=$_SESS["user"]["user_email"]?>
+              </li>
+              <li class="dropdown-item text-warning" onclick="cb.bye()">
+                <i class="mi mi-smol">logout</i> Logout
+              </li>
+            </ul>
+          </div>
         </nav>
         <?php } ?>
 

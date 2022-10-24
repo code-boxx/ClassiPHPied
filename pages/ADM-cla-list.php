@@ -6,29 +6,25 @@ $ads = $_CORE->autoCall("Classified", "getAll");
 if (is_array($ads)) { foreach ($ads as $id=>$ad) { ?>
 <div class="d-flex align-items-center border p-2">
   <div class="flex-grow-1">
-    <strong><?=$ad["cla_title"]?></strong><br>
-    <small class="text-secondary">
-      <span class="mi mi-smol">event</span> <?=$ad["cla_date"]?>
-    </small><br>
-    <small class="text-secondary">
-      <span class="mi mi-smol">article</span> <?=$ad["cla_summary"]?>
-    </small><br>
-    <small class="text-secondary">
-      <span class="mi mi-smol">person</span> <?=$ad["cla_person"]?>
-      <span class="mi mi-smol">email</span> <?=$ad["cla_email"]?$ad["cla_email"]:"NIL"?>
-      <span class="mi mi-smol">call</span> <?=$ad["cla_tel"]?$ad["cla_tel"]:"NIL"?>
-    </small>
+    <div class="fw-bold"><?=$ad["cla_title"]?></div>
+    <div><?=$ad["cla_summary"]?></div>
+    <small class="text-secondary"><?=$ad["cla_date"]?></small>
   </div>
-  <div>
-    <button class="btn btn-danger btn-sm mi" onclick="cla.del(<?=$id?>)">
-      delete
+  <div class="dropdown">
+    <button class="btn btn-primary btn-sm mi dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      more_vert
     </button>
-    <a class="btn btn-primary btn-sm mi" target="_blank" href="<?=HOST_BASE?>show/<?=$id?>">
-      search
-    </a>
-    <button class="btn btn-primary btn-sm mi" onclick="cla.addEdit(<?=$id?>)">
-      edit
-    </button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <li class="dropdown-item" onclick="cla.addEdit(<?=$id?>)">
+        <i class="mi mi-smol">edit</i> Edit
+      </li>
+      <li><a class="dropdown-item" target="_blank" href="<?=HOST_BASE?>show/<?=$id?>">
+        <i class="mi mi-smol">search</i> View
+      </a></li>
+      <li class="dropdown-item text-warning" onclick="cla.del(<?=$id?>)">
+        <i class="mi mi-smol">delete</i> Delete
+      </li>
+    </ul>
   </div>
 </div>
 <?php }} else { echo "No classifieds found."; }

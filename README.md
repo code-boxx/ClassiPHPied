@@ -2,13 +2,19 @@
 ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a load of features, but you won't even use half of them" kind of system. Just a basic one, with the essentials to you started quickly – Be it for a small business, or expanding on top of it.
 <br><br>
 
+## FEATURES
+1) Users management.
+2) Ads management.
+3) Progressive web app.
+<br><br>
+
 ## SCREENSHOTS
 <p float="left">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-1.jpg">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-2.jpg">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-3.jpg">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-4.jpg">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classiphpied-5.jpg">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-1.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-2.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-3.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-4.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-5.png">
 </p>
 <br><br>
 
@@ -23,14 +29,8 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 Just access `http://your-site.com/` in your browser and walk through the installer. The admin panel can be accessed from `http://your-site.com/admin`.
 <br><br>
 
-## FEATURES
-1) Users management.
-2) Ads management.
-3) Progressive web app.
-<br><br>
-
 ## DOCUMENTATION & FRAMEWORKS
-1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/) and [Core Boxx](https://code-boxx.com/core-boxx-php-rapid-development-framework/).
+1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), and [Core Boxx](https://code-boxx.com/core-boxx-php-rapid-development-framework/).
 2) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
 <br><br>
 

@@ -11,33 +11,30 @@ cFiles = [
   "assets/ico-512.png",
   "assets/book.jpg",
   // (A3) COMMON INTERFACE
+  "CB-manifest.json",
   "assets/PAGE-cb.js",
   "assets/maticon.woff2",
   // (A4) PAGES
-  "assets/PAGE-classified.css",
-  "assets/PAGE-classified.js",
   "assets/ADM-category.js",
   "assets/ADM-classified.js",
   "assets/ADM-images.css",
   "assets/ADM-images.js",
   "assets/ADM-login.js",
   "assets/ADM-settings.js",
-  "assets/ADM-users.js"
+  "assets/ADM-users.js",
+  "assets/PAGE-classified.css",
+  "assets/PAGE-classified.js",
+  "assets/PAGE-forgot.js"
 ];
 
 // (B) CREATE/INSTALL CACHE
-self.addEventListener("install", (evt) => {
-  evt.waitUntil(
-    caches.open(cName)
-    .then((cache) => { return cache.addAll(cFiles); })
-    .catch((err) => { console.error(err) })
-  );
-});
+self.addEventListener("install", evt => evt.waitUntil(
+  caches.open(cName)
+  .then(cache => cache.addAll(cFiles))
+  .catch(err => console.error(err))
+));
 
 // (C) LOAD FROM CACHE FIRST, FALLBACK TO NETWORK IF NOT FOUND
-self.addEventListener("fetch", (evt) => {
-  evt.respondWith(
-    caches.match(evt.request)
-    .then((res) => { return res || fetch(evt.request); })
-  );
-});
+self.addEventListener("fetch", evt => evt.respondWith(
+  caches.match(evt.request).then(res => res || fetch(evt.request))
+));

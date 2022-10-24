@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="description" content="<?=isset($_PMETA["desc"])?$_PMETA["desc"]:"ClassiPHPied - PHP Classified Ads"?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    
+
     <!-- (A2) WEB APP & ICONS -->
     <link rel="icon" href="<?=HOST_ASSETS?>favicon.png" type="image/png">
     <meta name="mobile-web-app-capable" content="yes">
@@ -42,7 +42,7 @@
     .head{background:#ddd}.zebra .d-flex{background:#fff;margin-bottom:10px}.zebra .d-flex:nth-child(odd){background-color:#f1f1f1}.pagination{border:1px solid #d0e8ff;background:#f0f8ff}
     #cb-body,body{min-height:100vh}#cb-toggle{display:none}#cb-side{width:155px;flex-shrink:0}#cb-side a{color:#fff}#cb-side .mi{color:#6a6a6a}@media screen and (max-width:768px){#cb-toggle{display:block}#cb-side{display:none}#cb-side.show{display:block}}
     </style>
-    <script>var cbhost={base:"<?=HOST_BASE?>",admin:"<?=HOST_ADMIN?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
+    <script>var cbhost={base:"<?=HOST_BASE?>",basepath:"<?=HOST_BASE_PATH?>",admin:"<?=HOST_ADMIN?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
     <script defer src="<?=HOST_ASSETS?>PAGE-cb.js"></script>
 
     <!-- (A6) ADDITIONAL SCRIPTS -->
@@ -65,14 +65,14 @@
     </div>
 
     <!-- (B2) TOAST MESSAGE -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index:11">
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index:11">
       <div id="cb-toast" class="toast hide" role="alert">
         <div class="toast-header">
           <span id="cb-toast-icon" class="mi"></span>
           <strong id="cb-toast-head" class="me-auto p-1"></strong>
           <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
         </div>
-        <div id="cb-toast-body" class="toast-body"></div>
+        <div id="cb-toast-body" class="toast-body bg-light"></div>
       </div>
     </div>
 
@@ -101,25 +101,37 @@
           <img src="<?=HOST_ASSETS?>favicon.png" loading="lazy" width="32" height="32">
         </a>
 
-        <!-- (C2-2) LEFT MENU ITEMS -->
+        <!-- (C2-2) LEFT MENU ITEMS
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="<?=HOST_BASE?>page">
-              <span class="mi mi-smol">featured_play_list</span> ADD YOUR PAGES
+              <span class="mi mi-smol">featured_play_list</span> @ADD YOUR PAGES
             </a>
           </li>
         </ul>
+        -->
       </div>
 
       <?php if (isset($_SESS["user"])) { ?>
       <!-- (C3) RIGHT ITEMS -->
       <div class="d-flex align-items-center">
-        <a class="btn btn-sm mi text-white me-2" href="<?=HOST_ADMIN?>">
-        wysiwyg
+        <a class="btn btn-sm mi text-primary me-2" href="<?=HOST_ADMIN?>">
+          wysiwyg
         </a>
-        <button class="btn btn-sm mi text-white" onclick="cb.bye()">
-          logout
-        </button>
+        <div class="dropdown">
+          <button class="btn btn-sm text-white mi" type="button" data-bs-toggle="dropdown">
+            person_outline
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+            <li class="dropdown-header">
+              <?=$_SESS["user"]["user_name"]?><br>
+              <?=$_SESS["user"]["user_email"]?>
+            </li>
+            <li class="dropdown-item text-warning" onclick="cb.bye()">
+              <i class="mi mi-smol">logout</i> Logout
+            </li>
+          </ul>
+        </div>
       </div>
       <?php } ?>
     </div></nav>

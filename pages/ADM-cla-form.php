@@ -91,12 +91,12 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
         <div class="mb-3">(click on existing image to remove)</div>
 
         <?php for ($i=1; $i<=CLA_IMAGES; $i++) { ?>
-        <div id="cla_img_<?=$i?>">
+        <div id="cla_img_<?=$i?>" class="mb-3 border">
           <?php if (isset($ad["images"][$i])) { ?>
             <img src="<?=HOST_UPLOADS . $ad["images"][$i]["img_file"]?>"
                  class="thumb cla-img" onclick="img.remove(<?=$i?>)">
           <?php } else { ?>
-          <button class="cla-img btn btn-primary btn-sm w-100 mb-3" type="button" onclick="img.init(<?=$i?>)">
+          <button class="cla-img btn btn-primary btn-sm w-100" type="button" onclick="img.init(<?=$i?>)">
             Choose an image
           </button>
         <?php } ?>

@@ -15,7 +15,7 @@ var cla = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : (pg) => { if (pg!=cla.pg) {
+  goToPage : pg => { if (pg!=cla.pg) {
     cla.pg = pg;
     cla.list();
   }},
@@ -30,22 +30,20 @@ var cla = {
 
   // (D) SHOW ADD/EDIT DOCKET
   // id : classified ID, for edit only
-  addEdit : (id) => {
-    cb.load({
-      page : "admin/cla/form", target : "cb-page-2",
-      data : { id : id ? id : "" },
-      onload : () => {
-        cb.page(1);
-        tinymce.remove();
-        tinymce.init({
-          selector : "#cla_text",
-          menubar : false,
-          plugins: "lists link",
-          toolbar: "bold italic underline | forecolor | bullist numlist | alignleft aligncenter alignright alignjustify | link"
-        });
-      }
-    });
-  },
+  addEdit : id => cb.load({
+    page : "admin/cla/form", target : "cb-page-2",
+    data : { id : id ? id : "" },
+    onload : () => {
+      cb.page(1);
+      tinymce.remove();
+      tinymce.init({
+        selector : "#cla_text",
+        menubar : false,
+        plugins: "lists link",
+        toolbar: "bold italic underline | forecolor | bullist numlist | alignleft aligncenter alignright alignjustify | link"
+      });
+    }
+  }),
 
   // (E) SAVE CLASSIFIED AD
   save : () => {
@@ -94,16 +92,12 @@ var cla = {
   // (F) DELETE CLASSIFIED AD
   //  id : int, classified ID
   //  confirm : boolean, confirmed delete
-  del : (id, confirm) => {
-    cb.modal("Please confirm", "Delete this entry?", () => {
-      cb.api({
-        mod : "classified", req : "del",
-        data : { id: id },
-        passmsg : "Classified Ad Deleted",
-        onpass : cla.list
-      });
-    });
-  }
+  del : id => cb.modal("Please confirm", "Delete this entry?", () => cb.api({
+    mod : "classified", req : "del",
+    data : { id: id },
+    passmsg : "Classified Ad Deleted",
+    onpass : cla.list
+  }))
 };
 
 var img = {
@@ -122,25 +116,23 @@ var img = {
 
   // (B) LOAD IMAGES
   pg : 1, // CURRENT PAGE
-  list : () => {
-    cb.load({
-      page : "admin/img/list", target : "img-list",
-      data : {
-        page : img.pg,
-        pick : true,
-      }
-    });
-  },
+  list : () => cb.load({
+    page : "admin/img/list", target : "img-list",
+    data : {
+      page : img.pg,
+      pick : true,
+    }
+  }),
 
   // (C) GO TO PAGE
   //  pg : int, page number
-  goToPage : (pg) => { if (pg!=img.pg) {
+  goToPage : pg => { if (pg!=img.pg) {
     img.pg = pg;
     img.list();
   }},
 
   // (C) PICK IMAGE
-  pick : (i) => {
+  pick : i => {
     // (C1) BACK TO FORM
     cb.page(1);
 
@@ -160,7 +152,7 @@ var img = {
   remove : slot => {
     var wrap = document.getElementById("cla_img_" + slot),
         nbtn = document.createElement("button");
-    nbtn.className = "cla-img btn btn-primary btn-sm w-100 mb-3";
+    nbtn.className = "cla-img btn btn-primary btn-sm w-100";
     nbtn.type = "button";
     nbtn.innerHTML = "Choose an image";
     nbtn.onclick = () => { img.init(slot); };

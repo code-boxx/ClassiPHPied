@@ -12,34 +12,31 @@ var img = {
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : (pg) => { if (pg!=img.pg) {
+  goToPage : pg => { if (pg!=img.pg) {
     img.pg = pg;
     img.list();
   }},
 
   // (C) COPY LINK
   //  i : image file
-  copy : (i) => {
-    navigator.clipboard.writeText(cbhost.uploads + i).then(() => {
-      cb.toast(1, "Success", "Link copied");
-    }, () => {
-      cb.toast(0, "Failed", "No permission to access clipboard");
-    });
+  copy : i => {
+    navigator.clipboard.writeText(cbhost.uploads + i)
+    .then(
+      () => cb.toast(1, "Success", "Link copied"),
+      () => cb.toast(0, "Failed", "No permission to access clipboard")
+    )
+    .catch(err => console.error(err));
   },
 
   // (D) DELETE IMAGE
   //  i : image file
   //  confirm : boolean, confirmed delete
-  del : (i) => {
-    cb.modal("Please confirm", "Delete image?", () => {
-      cb.api({
-        mod : "images", req : "del",
-        data : { file: i },
-        passmsg : "Image Deleted",
-        onpass : img.list
-      });
-    });
-  },
+  del : i => cb.modal("Please confirm", "Delete image?", () => cb.api({
+    mod : "images", req : "del",
+    data : { file: i },
+    passmsg : "Image Deleted",
+    onpass : img.list
+  })),
 
   // (E) UPLOAD IMAGE (ONE AT A TIME)
   //  i : current upload file number (none to start new upload session)
@@ -48,7 +45,7 @@ var img = {
     now : 0, // current file
     all : 0 // all files
   },
-  upload : (i) => {
+  upload : i => {
     // (E1) NEW UPLOAD
     if (i==undefined) {
       cb.loading(1);
