@@ -15,6 +15,7 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-3.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-4.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-5.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-cla-6.png">
 </p>
 <br><br>
 
@@ -30,7 +31,7 @@ Just access `http://your-site.com/` in your browser and walk through the install
 <br><br>
 
 ## DOCUMENTATION & FRAMEWORKS
-1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), and [Core Boxx](https://code-boxx.com/core-boxx-php-rapid-development-framework/).
+1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), and [Core Boxx](https://code-boxx.com/core-boxx-php-framework/).
 2) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
 <br><br>
 

@@ -20,7 +20,7 @@
 
   <h6>Built With</h6>
   <ul>
-    <li><a href="https://code-boxx.com/core-boxx-php-rapid-development-framework/" target="_blank">Core Boxx</a></li>
+    <li><a href="https://code-boxx.com/core-boxx-php-framework/" target="_blank">Core Boxx</a></li>
     <li><a href="https://github.com/firebase/php-jwt" target="_blank">PHP-JWT</a></li>
     <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>
     <li><a href="https://www.tiny.cloud/" target="_blank">TinyMCE</a></li>

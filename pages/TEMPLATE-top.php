@@ -25,7 +25,7 @@
 
     <!-- (A4) SERVICE WORKER -->
     <script>if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "/"});
+      navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "<?=HOST_BASE_PATH?>"});
     }</script>
 
     <!-- (A5) LIBRARIES & SCRIPTS -->
