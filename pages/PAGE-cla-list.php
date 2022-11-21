@@ -13,7 +13,7 @@ if (is_array($list)) { foreach ($list as $id=>$ad) { ?>
     <span class="badge bg-danger mb-2"><?=$ad["cat_name"]?></span>
     <h5 class="mb-0"><?=$ad["cla_title"]?></h5>
     <p class="mb-3"><?=$ad["cla_summary"]?></p>
-    <small class="text-secondary"><?=$ad["cla_date"]?></small><br>
+    <small class="text-secondary"><?=$ad["cd"]?></small><br>
     <a href="<?=HOST_BASE?>show/<?=$id?>" target="_blank" class="card-link">See More</a>
   </div>
 </div></div>

@@ -8,7 +8,7 @@ if (is_array($ads)) { foreach ($ads as $id=>$ad) { ?>
   <div class="flex-grow-1">
     <div class="fw-bold"><?=$ad["cla_title"]?></div>
     <div><?=$ad["cla_summary"]?></div>
-    <small class="text-secondary"><?=$ad["cla_date"]?></small>
+    <small class="text-secondary"><?=$ad["cd"]?></small>
   </div>
   <div class="dropdown">
     <button class="btn btn-primary btn-sm mi" type="button" data-bs-toggle="dropdown">

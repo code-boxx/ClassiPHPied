@@ -17,7 +17,7 @@ $_PMETA = ["load" => [["l", HOST_ASSETS."PAGE-classified.css"]]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (C1) TITLE & DATE -->
 <h1><?=$ad["cla_title"]?></h1>
-<div class="mb-4">Posted on: <?=$ad["cla_date"]?></div>
+<div class="mb-4">Posted on: <?=$ad["cd"]?></div>
 
 <div class="bg-white border p-4 mb-4">
   <!-- (C2) DETAILS -->

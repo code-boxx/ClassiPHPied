@@ -71,7 +71,7 @@ class Classified extends Core {
     // * NOTE : IT IS POSSIBLE TO ASSIGN MULTIPLE CATEGORIES
     // CHANGE THIS SQL IF YOU DECIDE TO ALLOW MULTIPLE CATEGORIES
     $cla = $this->DB->fetch(
-      "SELECT c.*, cc.`cat_id`
+      "SELECT c.*, DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`, cc.`cat_id`
        FROM `classifieds` c LEFT JOIN `cla_to_cat` cc
        USING(`cla_id`) WHERE c.`cla_id`=?",
       [$id]
@@ -109,7 +109,7 @@ class Classified extends Core {
     }
 
     // (D3) RESULTS
-    $sql = "SELECT `cla_id`, `cla_title`, `cla_summary`, `cla_date`, `cla_person`, `cla_email`, `cla_tel`
+    $sql = "SELECT `cla_id`, `cla_title`, `cla_summary`, `cla_date`, `cla_person`, `cla_email`, `cla_tel`, DATE_FORMAT(`cla_date`, '".DT_LONG."') `cd`
             $sql ORDER BY `cla_date` DESC";
     if ($page != null) { $sql .= $this->core->page["lim"]; }
     return $this->DB->fetchAll($sql, $data, "cla_id");
@@ -131,7 +131,7 @@ class Classified extends Core {
     }
 
     // (E2) GET CLASSIFIED ADS
-    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`, cat.`cat_name`
+    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`, cat.`cat_name`, DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`
             FROM `classifieds` c
             LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)
             LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)
