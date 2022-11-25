@@ -14,8 +14,8 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
     <!-- (C1) LEFT -->
     <div class="col-md-7">
       <!-- (C1-1) SUMMARY -->
+      <div class="fw-bold text-danger mb-2">AD SUMMARY</div>
       <div class="bg-white border p-4 mb-3">
-        <h5 class="mb-3">AD SUMMARY</h5>
         <input type="hidden" id="cla_id" value="<?=isset($ad)?$ad["cla_id"]:""?>">
 
         <div class="input-group mb-3">
@@ -51,15 +51,14 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       </div>
 
       <!-- (C1-2) BODY -->
+      <div class="fw-bold text-danger mb-2">AD BODY</div>
       <div class="bg-white border p-4 mb-3">
-        <h5 class="mb-3">AD BODY</h5>
         <textarea id="cla_text" class="form-control"><?=isset($ad)?$ad["cla_text"]:""?></textarea>
       </div>
 
       <!-- (C1-3) CONTACT PERSON -->
+      <div class="fw-bold text-danger mb-2">CONTACT PERSON</div>
       <div class="bg-white border p-4 mb-3">
-        <h5 class="mb-3">CONTACT PERSON</h5>
-
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">person</span>
@@ -86,10 +85,9 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
     <!-- (C2) RIGHT -->
     <div class="col-md-5">
       <!-- (C2-1) IMAGES -->
+      <div class="fw-bold text-danger">AD IMAGES</div>
+      <div class="text-secondary mb-2">(click on existing image to remove)</div>
       <div class="bg-white border p-4 mb-3">
-        <h5>AD IMAGES</h5>
-        <div class="mb-3">(click on existing image to remove)</div>
-
         <?php for ($i=1; $i<=CLA_IMAGES; $i++) { ?>
         <div id="cla_img_<?=$i?>" class="mb-3 border">
           <?php if (isset($ad["images"][$i])) { ?>

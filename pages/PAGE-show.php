@@ -16,16 +16,18 @@ if (!$valid) { require PATH_PAGES . "PAGE-404.php"; exit(); }
 $_PMETA = ["load" => [["l", HOST_ASSETS."PAGE-classified.css"]]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (C1) TITLE & DATE -->
-<h1><?=$ad["cla_title"]?></h1>
-<div class="mb-4">Posted on: <?=$ad["cd"]?></div>
+<div class="display-6"><?=$ad["cla_title"]?></div>
+<div class="mb-4 text-secondary">
+  <small>Posted on: <?=$ad["cd"]?></small>
+</div>
 
 <div class="bg-white border p-4 mb-4">
   <!-- (C2) DETAILS -->
-  <h4>Details</h4>
+  <h5 class="text-danger pb-2 border-bottom">Details</h5>
   <div><?=$ad["cla_text"]?></div>
 
   <!-- (C3) CONTACT PERSON -->
-  <h4 class="mt-5">Contact Person</h4>
+  <h5 class="mt-5 text-danger pb-2 border-bottom">Contact Person</h5>
   <div>Name: <?=$ad["cla_person"]?></div>
   <?php if ($ad["cla_email"]) { ?>
   <div>Email: <a href="mailto:<?=$ad["cla_email"]?>"><?=$ad["cla_email"]?></a></div>
@@ -35,7 +37,7 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
 
   <!-- (C4) IMAGES -->
   <?php if (is_array($ad["images"])) { ?>
-  <h4 class="mt-5">Images</h4>
+  <h5 class="mt-5 mb-4 text-danger pb-2 border-bottom">Images</h5>
   <div id="carouselExampleControls" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-inner">
       <?php $first = true; foreach ($ad["images"] as $img) { ?>

@@ -4,19 +4,14 @@ class Images extends Core {
   //  $page : optional page number
   function getAll ($page=1) {
     // (A1) IMAGES & PAGINATION
-    $images = glob(PATH_UPLOADS . "*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
-    $this->core->paginator(count($images), $page);
-    
-    // (A2) RESHUFFLE + BASENAME ONLY
-    if ($this->core->page["entries"]!=0) {
-      usort($images, function($file1, $file2) {
-        return filemtime($file2) <=> filemtime($file1);
-      });
-      $images = array_slice($images, $this->core->page["x"], $this->core->page["y"]);
-      foreach ($images as $k=>$i) { $images[$k] = basename($i); }
-    }
+    $iterator = new ArrayObject(glob(PATH_UPLOADS . "*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE));
+    $iterator = $iterator->getIterator();
+    $this->core->paginator($iterator->count(), $page);
+    $iterator = new LimitIterator($iterator, $this->core->page["x"], $this->core->page["y"]);
 
-    // (A3) RESULTS
+    // (A2) BASENAME ONLY
+    $images = [];
+    foreach ($iterator as $i) { $images[] = basename($i); }
     return $images;
   }
 
