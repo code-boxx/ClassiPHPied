@@ -25,6 +25,7 @@
     <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>
     <li><a href="https://www.tiny.cloud/" target="_blank">TinyMCE</a></li>
     <li><a href="https://developers.google.com/fonts/docs/material_icons" target="_blank">Material Icons</a></li>
+    <li><a href="https://ekoopmans.github.io/html2pdf.js/" target="_blank">HTML2PDF</a></li>
   </ul>
 </div>
 <?php require PATH_PAGES . "TEMPLATE-ADM-bottom.php"; ?>
