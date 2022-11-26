@@ -5,7 +5,8 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 ## FEATURES
 1) Users management.
 2) Ads management.
-3) Progressive web app.
+3) Images management.
+4) Installable progressive web app.
 <br><br>
 
 ## SCREENSHOTS
