@@ -8,6 +8,7 @@ if (is_array($ads)) { foreach ($ads as $id=>$ad) { ?>
   <div class="flex-grow-1">
     <div class="fw-bold"><?=$ad["cla_title"]?></div>
     <div><?=$ad["cla_summary"]?></div>
+    <span class="badge bg-danger mb-2"><?=$ad["cat_name"]?></span>
     <small class="text-secondary"><?=$ad["cd"]?></small>
   </div>
   <div class="dropdown">

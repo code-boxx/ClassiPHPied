@@ -1,33 +1,31 @@
 var cla = {
-  // (A) SHOW SELECTED CATEGORY
-  cid : null, // category id
-  page : 1, // current page
-  cat : () => {
-    cla.cid = document.getElementById("cla-cat").value;
-    cla.page = 1;
-    cla.list();
-  },
+  // (A) SHOW ALL CLASSIFIED ADS
+  pg : 1, // current page
+  find : "", // current search
+  id : "", // current category
+  list : () => cb.load({
+    page : "cla/list", target : "cla-list",
+    data : {
+      page : cla.pg,
+      id : cla.id,
+      search : cla.find
+    }
+  }),
 
   // (B) GO TO PAGE
   //  pg : int, page number
-  goToPage : (pg) => { if (pg!=cla.page) {
-    cla.page = pg;
+  goToPage : pg => { if (pg!=cla.pg) {
+    cla.pg = pg;
     cla.list();
   }},
 
-  // (C) LOAD LISTING
-  list : () => {
-    // (C1) FORM DATA
-    var data = new FormData();
-    data.append("id", cla.cid==null?"":cla.cid);
-    data.append("page", cla.page);
-
-    // (C2) AJAX LOAD
-    fetch(cbhost.base + "cla/list", { method:"POST", body:data })
-    .then((res)=>res.text())
-    .then((txt) => {
-      document.getElementById("cla-list").innerHTML = txt;
-    });
+  // (C) SEARCH CLASSIFIEDS
+  search : () => {
+    cla.find = document.getElementById("cla-search").value;
+    cla.id = document.getElementById("cla-cat").value;
+    cla.pg = 1;
+    cla.list();
+    return false;
   }
 };
-window.addEventListener("DOMContentLoaded", cla.list);
+window.addEventListener("load", cla.list);

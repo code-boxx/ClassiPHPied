@@ -1,9 +1,9 @@
 <?php
 // (A) LOAD AD LISTING
-$list = $_CORE->autoCall("Classified", "getAllByCat");
+$ads = $_CORE->autoCall("Classified", "getAll");
 
 // (B) DRAW LISTING
-if (is_array($list)) { foreach ($list as $id=>$ad) { ?>
+if (is_array($ads)) { foreach ($ads as $id=>$ad) { ?>
 <div class="col-lg-4 col-6"><div class="card">
   <a href="<?=HOST_BASE?>show/<?=$id?>" target="_blank">
     <img src="<?=$ad["img_file"] ? HOST_UPLOADS . $ad["img_file"] : HOST_ASSETS . "noimg.jpg"?>" class="card-img-top thumb"

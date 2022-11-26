@@ -24,7 +24,8 @@ cFiles = [
   "assets/ADM-users.js",
   "assets/PAGE-classified.css",
   "assets/PAGE-classified.js",
-  "assets/PAGE-forgot.js"
+  "assets/PAGE-forgot.js",
+  "assets/PAGE-show.js"
 ];
 
 // (B) CREATE/INSTALL CACHE

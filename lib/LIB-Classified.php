@@ -91,57 +91,44 @@ class Classified extends Core {
 
   // (D) GET ALL OR SEARCH CLASSIFIED ADS
   //  $search : optional, search term
+  //  $id : optional, category id
   //  $page : optional, current page number
-  function getAll ($search=null, $page=null) {
-    // (D1) PARTIAL SQL + DATA
-    $sql = "FROM `classifieds`";
+  function getAll ($search=null, $id=null, $page=null) {
+    // (D1) PARTIAL SQL
+    $where = "";
     $data = null;
     if ($search != null) {
-      $sql .= " WHERE `cla_title` LIKE ? OR `cla_text` LIKE ?";
+      $where = " WHERE (c.`cla_title` LIKE ? OR c.`cla_text` LIKE ?)";
       $data = ["%$search%", "%$search%"];
+    }
+    if ($id != null) {
+      if ($search == null) {
+        $where = " WHERE cc.`cat_id`=?";
+        $data = [$id];
+      } else {
+        $where .= " AND cc.`cat_id`=?" ;
+        $data[] = $id;
+      }
     }
 
     // (D2) PAGINATION
     if ($page != null) {
       $this->core->paginator(
-        $this->DB->fetchCol("SELECT COUNT(*) $sql", $data), $page
+        $this->DB->fetchCol(
+          "SELECT COUNT(*)
+           FROM `classifieds` c
+           LEFT JOIN `cla_to_cat` cc USING (`cla_id`)$where", $data),
+        $page
       );
     }
 
-    // (D3) RESULTS
-    $sql = "SELECT `cla_id`, `cla_title`, `cla_summary`, `cla_date`, `cla_person`, `cla_email`, `cla_tel`, DATE_FORMAT(`cla_date`, '".DT_LONG."') `cd`
-            $sql ORDER BY `cla_date` DESC";
-    if ($page != null) { $sql .= $this->core->page["lim"]; }
-    return $this->DB->fetchAll($sql, $data, "cla_id");
-  }
-
-  // (E) GET ALL BY CATEGORY
-  //  $id : optional, category id
-  //  $page : optional, current page number
-  function getAllByCat ($id=null, $page=null) {
-    // (E1) PAGINATION
-    $sql = $id===null || $id==""
-      ? "SELECT COUNT(*) FROM `classifieds`"
-      : "SELECT COUNT(*) FROM `cla_to_cat` WHERE `cat_id`=?";
-    $data = $id===null || $id=="" ? null : [$id];
-    if ($page != null) {
-      $this->core->paginator(
-        $this->DB->fetchCol($sql, $data), $page
-      );
-    }
-
-    // (E2) GET CLASSIFIED ADS
+    // (D3) GET CLASSIFIED ADS
     $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`, cat.`cat_name`, DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`
             FROM `classifieds` c
             LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)
             LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)
-            LEFT JOIN `categories` cat ON (cc.`cat_id`=cat.`cat_id`)";
-    $data = null;
-    if ($id!==null && $id!="") {
-      $sql .= " WHERE cc.`cat_id`=?";
-      $data = [$id];
-    }
-    $sql .= " ORDER BY c.`cla_date` DESC";
+            LEFT JOIN `categories` cat ON (cc.`cat_id`=cat.`cat_id`)$where
+            ORDER BY c.`cla_date` DESC";
     if ($page != null) { $sql .= $this->core->page["lim"]; }
     return $this->DB->fetchAll($sql, $data, "cla_id");
   }

@@ -15,14 +15,14 @@ if ($valid) {
 if (!$valid) { require PATH_PAGES . "PAGE-404.php"; exit(); }
 $_PMETA = ["load" => [
   ["l", HOST_ASSETS."PAGE-classified.css"],
-  ["s", HOST_ASSETS."html2pdf.bundle.min.js"]
+  ["s", HOST_ASSETS."PAGE-show.js", "defer"]
 ]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (C1) TITLE & DATE -->
 <div class="d-flex">
   <div class="display-6 flex-grow-1"><?=$ad["cla_title"]?></div>
-  <button class="btn btn-primary mi me-1" onclick="html2pdf(document.getElementById('cb-page-1'))">download</button>
-  <button class="btn btn-primary mi" onclick="window.print()">print</button>
+  <button class="btn btn-primary mi me-1" onclick="show.pdf()">download</button>
+  <button class="btn btn-primary mi" onclick="show.print()">print</button>
 </div>
 <div class="text-secondary mb-4">
   <small>Posted on: <?=$ad["cd"]?></small>
