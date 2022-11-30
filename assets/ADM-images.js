@@ -1,12 +1,16 @@
 var img = {
   // (A) SHOW ALL IMAGES
-  pg : 1, // CURRENT PAGE
+  pg : 1, // current page
+  find : "", // current search
   list : () => {
     cb.page(0);
     cb.load({
       page : "admin/img/list",
       target : "img-list",
-      data : { page : img.pg }
+      data : {
+        page : img.pg,
+        search : img.find
+      }
     });
   },
 
@@ -17,7 +21,15 @@ var img = {
     img.list();
   }},
 
-  // (C) COPY LINK
+  // (C) SEARCH IMAGE
+  search : () => {
+    img.find = document.getElementById("img-search").value;
+    img.pg = 1;
+    img.list();
+    return false;
+  },
+
+  // (D) COPY LINK
   //  i : image file
   copy : i => {
     navigator.clipboard.writeText(cbhost.uploads + i)
@@ -28,7 +40,7 @@ var img = {
     .catch(err => console.error(err));
   },
 
-  // (D) DELETE IMAGE
+  // (E) DELETE IMAGE
   //  i : image file
   //  confirm : boolean, confirmed delete
   del : i => cb.modal("Please confirm", "Delete image?", () => cb.api({
@@ -38,7 +50,7 @@ var img = {
     onpass : img.list
   })),
 
-  // (E) UPLOAD IMAGE (ONE AT A TIME)
+  // (F) UPLOAD IMAGE (ONE AT A TIME)
   //  i : current upload file number (none to start new upload session)
   upqueue : {
     list : null, // upload list
@@ -46,7 +58,7 @@ var img = {
     all : 0 // all files
   },
   upload : i => {
-    // (E1) NEW UPLOAD
+    // (F1) NEW UPLOAD
     if (i==undefined) {
       cb.loading(1);
       var field = document.getElementById("img-up");
@@ -57,7 +69,7 @@ var img = {
       return false;
     }
 
-    // (E2) PROCEED AJAX UPLOAD
+    // (F2) PROCEED AJAX UPLOAD
     else {
       cb.api({
         mod : "images", req : "upload",
