@@ -13,7 +13,10 @@ if ($valid) {
 
 // (C) OUTPUT HTML
 if (!$valid) { require PATH_PAGES . "PAGE-404.php"; exit(); }
-$_PMETA = ["load" => [
+$_PMETA = [
+  "title" => $ad["cla_title"],
+  "desc" => $ad["cla_summary"],
+  "load" => [
   ["l", HOST_ASSETS."PAGE-classified.css"],
   ["s", HOST_ASSETS."PAGE-show.js", "defer"]
 ]];
@@ -21,6 +24,7 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (C1) TITLE & DATE -->
 <div class="d-flex">
   <div class="display-6 flex-grow-1"><?=$ad["cla_title"]?></div>
+  <button id="ad-share" class="btn btn-primary mi me-1 d-none" onclick="show.share()">share</button>
   <button class="btn btn-primary mi me-1" onclick="show.pdf()">download</button>
   <button class="btn btn-primary mi" onclick="show.print()">print</button>
 </div>
@@ -45,7 +49,7 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
   <!-- (C4) IMAGES -->
   <?php if (is_array($ad["images"])) { ?>
   <h5 class="mt-5 mb-4 text-danger pb-2 border-bottom">Images</h5>
-  <div id="carouselExampleControls" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div id="slide-control" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-inner">
       <?php $first = true; foreach ($ad["images"] as $img) { ?>
       <div class="carousel-item<?=$first?" active":""?>">
@@ -53,11 +57,11 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
       </div>
       <?php $first = false; } ?>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#slide-control" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#slide-control" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
