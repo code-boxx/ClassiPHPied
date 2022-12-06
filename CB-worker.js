@@ -17,6 +17,7 @@ cFiles = [
   // (A4) PAGES
   "assets/ADM-category.js",
   "assets/ADM-classified.js",
+  "ADM-classified-images.js",
   "assets/ADM-images.css",
   "assets/ADM-images.js",
   "assets/ADM-login.js",

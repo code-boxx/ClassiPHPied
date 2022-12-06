@@ -1,19 +1,9 @@
 <?php
 // (A) GET IMAGES
 $images = $_CORE->autoCall("Images", "getAll");
-
-// (B) PICKER MODE
 $pick = isset($_POST["pick"]);
-if ($pick) { ?>
-<div class="d-flex mb-3">
-  <h3 class="flex-grow-1">CHOOSE AN IMAGE</h3>
-  <button class="btn btn-danger mi" onclick="cb.page(1)">
-    reply
-  </button>
-</div>
-<?php }
 
-// (C) LIST IMAGES
+// (B) LIST IMAGES
 if (count($images)>0) { foreach ($images as $i) { ?>
 <div class="col-lg-4 col-12 p-1"><div class="bg-dark border">
   <?php if ($pick) { ?>

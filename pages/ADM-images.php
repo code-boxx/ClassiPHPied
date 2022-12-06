@@ -20,7 +20,7 @@ require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
   <!-- (B2) UPLOAD FORM -->
   <label for="img-up">
     <span class="btn btn-primary mi" aria-hidden="true">upload</span>
-    <input type="file" id="img-up" class="d-none" multiple required accept="image/*" onchange="img.upload()">
+    <input type="file" id="img-up" class="d-none" multiple required accept=".jpg,.jpeg,.webp,.gif,.png" onchange="img.upload()">
   </label>
 </div>
 

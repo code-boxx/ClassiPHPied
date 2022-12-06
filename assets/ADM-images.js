@@ -85,6 +85,11 @@ var img = {
           } else {
             img.upload(img.upqueue.now);
           }
+        },
+        onfail : () => {
+          cb.loading(0);
+          document.getElementById("img-up").value = "";
+          img.list();
         }
       });
     }

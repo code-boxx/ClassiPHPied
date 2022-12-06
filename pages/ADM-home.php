@@ -2,7 +2,8 @@
 $_PMETA = ["load" => [
   ["l", HOST_ASSETS."ADM-images.css"],
   ["s", HOST_ASSETS."tinymce/tinymce.min.js", "defer"],
-  ["s", HOST_ASSETS."ADM-classified.js", "defer"]
+  ["s", HOST_ASSETS."ADM-classified.js", "defer"],
+  ["s", HOST_ASSETS."ADM-classified-images.js", "defer"]
 ]];
 require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 <!-- (A) HEADER -->

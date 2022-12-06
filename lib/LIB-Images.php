@@ -18,8 +18,18 @@ class Images extends Core {
 
   // (B) UPLOAD FILE
   function upload () {
+    // (B1) FILE "SETTINGS"
     $source = $_FILES["upfile"]["tmp_name"];
     $destination = PATH_UPLOADS . $_FILES["upfile"]["name"];
+    $ext = strtolower(pathinfo($_FILES["upfile"]["name"], PATHINFO_EXTENSION));
+
+    // (B2) FILE TYPE CHECK
+    if (!in_array($ext, ["jpg", "jpeg", "webp", "gif", "png"])) {
+      $this->error = "'$ext' file is not allowed.";
+      return false;
+    }
+
+    // (B3) PROCEED UPLOAD
     if (move_uploaded_file($source, $destination)) { return true; }
     else {
       $this->error = "Error uploading to $destination.";
