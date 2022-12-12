@@ -8,7 +8,7 @@ require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 <div class="row justify-content-center">
 <div class="col-md-10 bg-white border" style="max-width:1000px">
 <div class="row">
-  <div class="col-2" style="background:url('<?=HOST_ASSETS?>login.jpg') center;background-size:cover"></div>
+  <div class="col-2" style="background:url('<?=HOST_UPLOADS?>login.jpg') center;background-size:cover"></div>
   <form class="col-10 p-4" onsubmit="return login();">
     <img src="<?=HOST_ASSETS?>favicon.png" class="p-2 mb-3 rounded-circle" style="background:#f1f1f1">
     <h3 class="m-0">SIGN IN</h3>

@@ -11,11 +11,11 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 
 ## SCREENSHOTS
 <p float="left">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1a.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5a.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6.png">
 </p>
 <br><br>

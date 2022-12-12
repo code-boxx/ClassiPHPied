@@ -20,7 +20,7 @@ define("API_CORS", false);
 // (C) DATABASE
 define("DB_HOST", "localhost");
 define("DB_NAME", "classiphpied");
-define("DB_CHARSET", "utf8");
+define("DB_CHARSET", "utf8mb4");
 define("DB_USER", "root");
 define("DB_PASSWORD", "");
 

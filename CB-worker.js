@@ -9,7 +9,6 @@ cFiles = [
   // (A2) ICONS + IMAGES
   "assets/favicon.png",
   "assets/ico-512.png",
-  "assets/book.jpg",
   // (A3) COMMON INTERFACE
   "CB-manifest.json",
   "assets/PAGE-cb.js",
