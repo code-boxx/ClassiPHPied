@@ -1,6 +1,7 @@
 <?php require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 <h3>CLASSIPHPIED</h3>
 <div class="mb-3">open source php classfied ads system</div>
+<img class="ihead mb-3" src="<?=HOST_ASSETS?>HEAD-classiphpied.jpg">
 <div class="bg-white border p-3">
   <h6>Links & Documentation</h6>
   <ul>
