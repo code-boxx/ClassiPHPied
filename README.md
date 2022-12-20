@@ -16,7 +16,7 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3b.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4b.png">
   <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6b6.png">
+  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6b.png">
 </p>
 <br><br>
 
