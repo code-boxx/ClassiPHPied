@@ -42,7 +42,6 @@
     #cb-loading{width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:999;background:rgba(0,0,0,.7)}#cb-loading .spinner-border{width:80px;height:80px}
     .head{background:#ddd}.zebra .d-flex{background:#fff;margin-bottom:10px}.zebra .d-flex:nth-child(odd){background-color:#f1f1f1}.pagination{border:1px solid #d0e8ff;background:#f0f8ff}
     #cb-body,body{min-height:100vh}#cb-toggle{display:none}#cb-side{width:155px;flex-shrink:0}#cb-side a{color:#fff}#cb-side .mi{color:#6a6a6a}@media screen and (max-width:768px){#cb-toggle{display:block}#cb-side{display:none}#cb-side.show{display:block}}
-    .ihead{width:100%;max-width:1000px;height:300px;object-fit:cover}
     </style>
     <script>var cbhost={base:"<?=HOST_BASE?>",basepath:"<?=HOST_BASE_PATH?>",admin:"<?=HOST_ADMIN?>",api:"<?=HOST_API_BASE?>",assets:"<?=HOST_ASSETS?>",uploads:"<?=HOST_UPLOADS?>"};</script>
     <script defer src="<?=HOST_ASSETS?>PAGE-cb.js"></script>
@@ -106,6 +105,9 @@
           </a>
           <a class="nav-link ms-2" href="<?=HOST_ADMIN?>images">
             <span class="mi mi-smol">image</span> Images
+          </a>
+          <a class="nav-link ms-2" href="<?=HOST_ADMIN?>reports">
+            <span class="mi mi-smol">library_books</span> Reports
           </a>
           <hr>
         </li>

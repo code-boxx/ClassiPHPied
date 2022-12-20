@@ -70,7 +70,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
           <div class="input-group-prepend">
             <span class="input-group-text mi">email</span>
           </div>
-          <input type="email" class="form-control" id="cla_email" value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email">
+          <input type="email" class="form-control" id="cla_email" required value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email">
         </div>
 
         <div class="input-group">
