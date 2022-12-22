@@ -2,7 +2,7 @@
 self.addEventListener("install", evt => {
   self.skipWaiting();
   evt.waitUntil(
-    caches.open("classiphpied")
+    caches.open("Classiphpied")
     .then(cache => cache.addAll([
       // (A1) BOOTSTRAP
       "assets/bootstrap.bundle.min.js",
@@ -19,7 +19,7 @@ self.addEventListener("install", evt => {
       // (A4) PAGES
       "assets/ADM-category.js",
       "assets/ADM-classified.js",
-      "ADM-classified-images.js",
+      "assets/ADM-classified-images.js",
       "assets/ADM-images.css",
       "assets/ADM-images.js",
       "assets/ADM-login.js",
