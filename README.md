@@ -11,12 +11,12 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 
 ## SCREENSHOTS
 <p float="left">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5b.png">
-  <img width="250" style="inline-block" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6b.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1c.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2b.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3b.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4b.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5c.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6b.png">
 </p>
 <br><br>
 
