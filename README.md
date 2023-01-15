@@ -2,14 +2,14 @@
 ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a load of features, but you won't even use half of them" kind of system. Just a basic one, with the essentials to help you get started quickly – Be it for a small business, or expanding on top of it.
 <br><br>
 
-## FEATURES
+## :white_check_mark: FEATURES
 1) Users management.
 2) Ads management.
 3) Images management.
 4) Installable progressive web app.
 <br><br>
 
-## SCREENSHOTS
+## :camera: SCREENSHOTS
 <p float="left">
   <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1c.png">
   <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2b.png">
@@ -20,23 +20,23 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 </p>
 <br><br>
 
-## REQUIREMENTS
+## :ballot_box_with_check: REQUIREMENTS
 1) LAMP/WAMP/MAMP/XAMPP
 2) Apache Mod Rewrite
 3) PHP MYSQL PDO Extension
 4) At least PHP 8.0
 <br><br>
 
-## INSTALLATION
+## :floppy_disk: INSTALLATION
 Just access `http://your-site.com/` in your browser and walk through the installer. The admin panel can be accessed from `http://your-site.com/admin`.
 <br><br>
 
-## DOCUMENTATION & FRAMEWORKS
+## :bulb: DOCUMENTATION & FRAMEWORKS
 1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), [HTML2PDF](https://ekoopmans.github.io/html2pdf.js/), and [Core Boxx](https://code-boxx.com/core-boxx-php-framework/).
 2) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
 <br><br>
 
-## LICENSE
+## :newspaper: LICENSE
 Copyright by Code Boxx
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
