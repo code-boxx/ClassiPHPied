@@ -7,8 +7,8 @@ class Images extends Core {
     if ($search != "") { $search = "*$search"; }
     $iterator = new ArrayObject(glob(PATH_UPLOADS . "$search*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE));
     $iterator = $iterator->getIterator();
-    $this->core->paginator($iterator->count(), $page);
-    $iterator = new LimitIterator($iterator, $this->core->page["x"], $this->core->page["y"]);
+    $this->Core->paginator($iterator->count(), $page);
+    $iterator = new LimitIterator($iterator, $this->Core->page["x"], $this->Core->page["y"]);
 
     // (A2) BASENAME ONLY
     $images = [];

@@ -11,12 +11,12 @@ ClassiPHPied is a simple PHP Classified Ads System. This is not a "we have a loa
 
 ## :camera: SCREENSHOTS
 <p float="left">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1c.png">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2b.png">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3b.png">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4b.png">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5c.png">
-  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6b.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-1.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-2.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-3.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-4.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-5.png">
+  <img width="250" src="https://github.com/code-boxx/ClassiPHPied/blob/main/assets/ss-classi-6.png">
 </p>
 <br><br>
 
@@ -32,8 +32,12 @@ Just access `http://your-site.com/` in your browser and walk through the install
 <br><br>
 
 ## :bulb: DOCUMENTATION & FRAMEWORKS
-1) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), [HTML2PDF](https://ekoopmans.github.io/html2pdf.js/), and [Core Boxx](https://code-boxx.com/core-boxx-php-framework/).
-2) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
+1) Visit https://code-boxx.com/classiphpied-php-classified-system/ for the full documentation!
+2) Built on [Bootstrap](https://getbootstrap.com/), [Material Icons](https://fonts.google.com/icons), [TinyMCE](https://www.tiny.cloud/), [PHP-JWT](https://github.com/firebase/php-jwt), [HTML2PDF](https://ekoopmans.github.io/html2pdf.js/), and [Core Boxx](https://code-boxx.com/core-boxx-php-framework/).
+<br><br>
+
+## :star: SUPPORT
+Like this project? Just give it a star. That will indirectly help grow my blog a little bit. :wink:
 <br><br>
 
 ## :newspaper: LICENSE

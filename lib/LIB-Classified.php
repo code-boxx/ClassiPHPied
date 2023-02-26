@@ -113,7 +113,7 @@ class Classified extends Core {
 
     // (D2) PAGINATION
     if ($page != null) {
-      $this->core->paginator(
+      $this->Core->paginator(
         $this->DB->fetchCol(
           "SELECT COUNT(*)
            FROM `classifieds` c
@@ -129,7 +129,7 @@ class Classified extends Core {
             LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)
             LEFT JOIN `categories` cat ON (cc.`cat_id`=cat.`cat_id`)$where
             ORDER BY c.`cla_date` DESC";
-    if ($page != null) { $sql .= $this->core->page["lim"]; }
+    if ($page != null) { $sql .= $this->Core->page["lim"]; }
     return $this->DB->fetchAll($sql, $data, "cla_id");
   }
 }
