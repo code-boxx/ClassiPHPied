@@ -29,7 +29,10 @@ define("I_UPLOADS", I_ASSETS . "uploads" . DIRECTORY_SEPARATOR);
 
 // (A4) SQL FILES - FROM OLDEST TO NEWEST VERSIONS
 // @TODO - SET AS NECESSARY
-define("I_SQL", ["SQL-Classiphpied-1.sql", "SQL-Classiphpied-2.sql", "SQL-Classiphpied-3.sql"]);
+define("I_SQL", [
+  "SQL-Classiphpied-1.sql", "SQL-Classiphpied-2.sql", "SQL-Classiphpied-3.sql",
+  "SQL-Classiphpied-4.sql", "SQL-Classiphpied-5.sql"
+]);
 
 // (A5) HELPER FUNCTION - IMPORT SQL FILES
 function import ($pdo, $from=0) {
