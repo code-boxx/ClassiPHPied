@@ -9,11 +9,13 @@ class Classified extends Core {
   //  $person : contact person/client name
   //  $email : (optional) contact email/client email
   //  $tel : (optional) contact email/client telephone
+  //  $end : (optional) classified end date
   //  $id : (for update only) classified id
-  function save ($title, $summary, $text, $images, $cat, $person, $email=null, $tel=null, $id=null) {
+  function save ($title, $summary, $text, $images, $cat, $person, $email=null, $tel=null, $end=null, $id=null) {
     // (A1) DATA SETUP
-    $fields = ["cla_title", "cla_summary", "cla_text", "cla_person", "cla_email", "cla_tel"];
-    $data = [$title, $summary, $text, $person, $email, $tel];
+    if ($end=="") { $end = null; }
+    $fields = ["cla_title", "cla_summary", "cla_text", "cla_person", "cla_email", "cla_tel", "cla_end"];
+    $data = [$title, $summary, $text, $person, $email, $tel, $end];
     $this->DB->start();
 
     // (A2) ADD/UPDATE CLASSIFIED
@@ -71,7 +73,8 @@ class Classified extends Core {
     // * NOTE : IT IS POSSIBLE TO ASSIGN MULTIPLE CATEGORIES
     // CHANGE THIS SQL IF YOU DECIDE TO ALLOW MULTIPLE CATEGORIES
     $cla = $this->DB->fetch(
-      "SELECT c.*, DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`, cc.`cat_id`
+      "SELECT c.*, cc.`cat_id`,
+       DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`, DATE_FORMAT(c.`cla_end`, '".DT_LONG."') `ed`
        FROM `classifieds` c LEFT JOIN `cla_to_cat` cc
        USING(`cla_id`) WHERE c.`cla_id`=?",
       [$id]
@@ -92,8 +95,9 @@ class Classified extends Core {
   // (D) GET ALL OR SEARCH CLASSIFIED ADS
   //  $search : optional, search term
   //  $id : optional, category id
+  //  $end : exclude ads that have ended? default false.
   //  $page : optional, current page number
-  function getAll ($search=null, $id=null, $page=null) {
+  function getAll ($search=null, $id=null, $end=false, $page=null) {
     // (D1) PARTIAL SQL
     $where = "";
     $data = null;
@@ -102,12 +106,21 @@ class Classified extends Core {
       $data = ["%$search%", "%$search%"];
     }
     if ($id != null) {
-      if ($search == null) {
+      if ($where == "") {
         $where = " WHERE cc.`cat_id`=?";
         $data = [$id];
       } else {
         $where .= " AND cc.`cat_id`=?" ;
         $data[] = $id;
+      }
+    }
+    if ($end) {
+      if ($where == "") {
+        $where = " WHERE c.`cla_end` IS NULL OR c.cla_end >= ?";
+        $data = [date("Y-m-d 00:00:00")];
+      } else {
+        $where .= " AND (c.`cla_end` IS NULL OR c.cla_end >= ?)";
+        $data[] = date("Y-m-d 00:00:00");
       }
     }
 
@@ -123,7 +136,8 @@ class Classified extends Core {
     }
 
     // (D3) GET CLASSIFIED ADS
-    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, ci.`img_file`, cat.`cat_name`, DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`
+    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, c.`cla_end`, ci.`img_file`, cat.`cat_name`,
+            DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`, DATE_FORMAT(c.`cla_end`, '".DT_LONG."') `ce`
             FROM `classifieds` c
             LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)
             LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)

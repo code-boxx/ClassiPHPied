@@ -1,5 +1,6 @@
 <?php
 // (A) LOAD AD LISTING
+$_POST["end"] = true;
 $ads = $_CORE->autoCall("Classified", "getAll");
 
 // (B) DRAW LISTING

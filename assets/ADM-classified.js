@@ -62,6 +62,7 @@ var cla = {
       cat : document.getElementById("cla_cat").value,
       title : document.getElementById("cla_title").value,
       summary : document.getElementById("cla_summary").value,
+      end : document.getElementById("cla_end").value,
       text : text,
       images : [],
       person : document.getElementById("cla_person").value,

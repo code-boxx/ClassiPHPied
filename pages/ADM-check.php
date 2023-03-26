@@ -1,7 +1,7 @@
 <?php
 // (A) FOR ADMIN ONLY
 if (!isset($_SESS["user"]) && $_PATH!="admin/login/") {
-  if ($_POST["ajax"]) { exit("E"); }
+  if (isset($_POST["ajax"])) { exit("E"); }
   $_CORE->redirect("admin/login/");
 }
 

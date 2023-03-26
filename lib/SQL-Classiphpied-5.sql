@@ -1,0 +1,1 @@
+ALTER TABLE `classifieds` ADD `cla_end` DATETIME NULL DEFAULT NULL AFTER `cla_date`, ADD INDEX (`cla_end`);

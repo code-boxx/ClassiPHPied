@@ -42,12 +42,20 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
           <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>" placeholder="Title">
         </div>
 
-        <div class="input-group">
+        <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text mi">summarize</span>
           </div>
           <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>" placeholder="Short Summary">
         </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text mi">history_toggle_off</span>
+          </div>
+          <input type="datetime-local" class="form-control" id="cla_end" value="<?=isset($ad)?$ad["cla_end"]:""?>">
+        </div>
+        <div class="text-secondary mt-2">* Classified end date, leave blank for none.</div>
       </div>
 
       <!-- (C1-2) BODY -->

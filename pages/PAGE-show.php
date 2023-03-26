@@ -28,11 +28,16 @@ require PATH_PAGES . "TEMPLATE-top.php"; ?>
   <button class="btn btn-primary mi me-1" onclick="show.pdf()">download</button>
   <button class="btn btn-primary mi" onclick="show.print()">print</button>
 </div>
-<div class="text-secondary mb-4">
+<div class="text-secondary">
   <small>Posted on: <?=$ad["cd"]?></small>
 </div>
+<?php if (isset($ad["ed"])) { ?>
+<div class="text-secondary">
+  <small>Ending on: <?=$ad["ed"]?></small>
+</div>
+<?php } ?>
 
-<div class="bg-white border p-4 mb-4">
+<div class="bg-white border p-4 my-4">
   <!-- (C2) DETAILS -->
   <h5 class="text-danger pb-2 border-bottom">Details</h5>
   <div><?=$ad["cla_text"]?></div>
