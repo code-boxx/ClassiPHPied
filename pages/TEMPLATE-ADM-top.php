@@ -143,7 +143,7 @@
             </a>
             <div class="dropdown">
               <button class="btn btn-sm text-white mi" type="button" data-bs-toggle="dropdown">
-                person_outline
+                person
               </button>
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                 <li class="dropdown-header">
