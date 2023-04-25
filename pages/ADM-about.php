@@ -1,9 +1,8 @@
 <?php require PATH_PAGES . "TEMPLATE-ADM-top.php"; ?>
 <h3>CLASSIPHPIED</h3>
 <div class="mb-3">open source php classfied ads system</div>
-<div class="bg-white border p-3">
 <img class="img-fluid d-block mx-auto mb-3" style="max-height:450px;" src="<?=HOST_ASSETS?>head-classiphpied.webp">
-
+<div class="bg-white border p-3">
   <h6>Links & Documentation</h6>
   <ul>
     <li><a href="https://code-boxx.com/classiphpied-php-classified-system/" target="_blank">ClassiPHPied Official Webpage</a></li>

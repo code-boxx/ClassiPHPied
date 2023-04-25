@@ -9,7 +9,7 @@
       search
     </button>
   </form>
-  <button class="btn btn-danger mi" onclick="cb.page(1)">
+  <button class="btn btn-danger mi" onclick="cb.page(2)">
     reply
   </button>
 </div>

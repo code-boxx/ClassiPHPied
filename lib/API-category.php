@@ -1,22 +1,14 @@
 <?php
-// (A) REGISTERED USERS ONLY
-if (!isset($_SESS["user"])) {
+// (A) ADMIN ONLY
+if (!isset($_CORE->Session->data["user"])) {
   $_CORE->respond(0, "Please sign in first", null, null, 403);
 }
 
-switch ($_REQ) {
-  // (B) INVALID REQUEST
-  default:
-    $_CORE->respond(0, "Invalid request", null, null, 400);
-    break;
+// (B) API ENDPOINTS
+$_CORE->autoAPI([
+  "save" => ["Category", "save"],
+  "del" => ["Category", "del"]
+]);
 
-  // (C) SAVE CATEGORY
-  case "save":
-    $_CORE->autoAPI("Category", "save");
-    break;
-
-  // (D) DELETE CATEGORY
-  case "del":
-    $_CORE->autoAPI("Category", "del");
-    break;
-}
+// (C) INVALID REQUEST
+$_CORE->respond(0, "Invalid request", null, null, 400);

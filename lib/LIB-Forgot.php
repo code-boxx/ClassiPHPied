@@ -7,14 +7,15 @@ class Forgot extends Core {
 
   // (B) GET PASSWORD RESET REQUEST
   function get ($id) {
-    return $this->DB->fetch("SELECT * FROM `password_reset` WHERE `user_id`=?", [$id]);
+    return $this->DB->fetch(
+      "SELECT * FROM `password_reset` WHERE `user_id`=?", [$id]
+    );
   }
 
   // (C) PASSWORD RESET REQUEST
   function request ($email) {
     // (C1) ALREADY SIGNED IN
-    global $_SESS;
-    if (isset($_SESS["user"])) {
+    if (isset($this->Session->data["user"])) {
       $this->error = "You are already signed in.";
       return false;
     }
@@ -62,8 +63,7 @@ class Forgot extends Core {
   // (D) PROCESS PASSWORD RESET
   function reset ($id, $hash) {
     // (D1) ALREADY SIGNED IN
-    global $_SESS;
-    if (isset($_SESS["user"])) {
+    if (isset($this->Session->data["user"])) {
       $this->error = "You are already signed in.";
       return false;
     }
@@ -71,7 +71,7 @@ class Forgot extends Core {
     // (D2) CHECK REQUEST
     $req = $this->get($id);
     $pass = is_array($req);
-
+    
     // (D3) CHECK EXPIRE
     if ($pass) {
       $expire = strtotime($req["reset_time"]) + $this->valid;

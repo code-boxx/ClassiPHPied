@@ -3,7 +3,7 @@ var usr = {
   pg : 1, // current page
   find : "", // current search
   list : () => {
-    cb.page(0);
+    cb.page(1);
     cb.load({
       page : "admin/users/list", target : "user-list",
       data : {
@@ -33,7 +33,7 @@ var usr = {
   addEdit : id => cb.load({
     page : "admin/users/form", target : "cb-page-2",
     data : { id : id ? id : "" },
-    onload : () => cb.page(1)
+    onload : () => cb.page(2)
   }),
 
   // (E) SAVE USER
@@ -55,7 +55,7 @@ var usr = {
 
     // (E3) AJAX
     cb.api({
-      mod : "users", req : "save",
+      mod : "users", act : "save",
       data : data,
       passmsg : "User Saved",
       onpass : usr.list
@@ -67,7 +67,7 @@ var usr = {
   //  id : int, user ID
   //  confirm : boolean, confirmed delete
   del : id => cb.modal("Please confirm", "Delete user?", () => cb.api({
-    mod : "users", req : "del",
+    mod : "users", act : "del",
     data : { id: id },
     passmsg : "User Deleted",
     onpass : usr.list

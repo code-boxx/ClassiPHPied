@@ -3,7 +3,7 @@ var img = {
   pg : 1, // current page
   find : "", // current search
   list : () => {
-    cb.page(0);
+    cb.page(1);
     cb.load({
       page : "admin/img/list",
       target : "img-list",
@@ -44,7 +44,7 @@ var img = {
   //  i : image file
   //  confirm : boolean, confirmed delete
   del : i => cb.modal("Please confirm", "Delete image?", () => cb.api({
-    mod : "images", req : "del",
+    mod : "images", act : "del",
     data : { file: i },
     passmsg : "Image Deleted",
     onpass : img.list
@@ -72,7 +72,7 @@ var img = {
     // (F2) PROCEED AJAX UPLOAD
     else {
       cb.api({
-        mod : "images", req : "upload",
+        mod : "images", act : "upload",
         data : { "upfile": img.upqueue.list[img.upqueue.now] },
         loading : false,
         passmsg : "Image Uploaded",

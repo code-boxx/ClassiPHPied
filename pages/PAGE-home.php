@@ -5,7 +5,7 @@ $_PMETA = ["load" => [
 ]];
 require PATH_PAGES . "TEMPLATE-top.php"; ?>
 <!-- (A) HEADER -->
-<div id="cla-head" class="position-relative mb-4" style="background-image:url(<?=HOST_UPLOADS?>cover.webp);">
+<div id="cla-head" class="position-relative mb-4" style="background-image:url(<?=HOST_ASSETS?>cover.webp);">
   <form class="position-absolute d-flex align-items-stretch" onsubmit="return cla.search()">
     <input type="text" id="cla-search" placeholder="Search" class="form-control form-control-sm flex-grow-1">
     <select id="cla-cat" class="w-auto flex-shrink-1 mx-1 form-select">

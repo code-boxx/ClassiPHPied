@@ -29,10 +29,7 @@ define("I_UPLOADS", I_ASSETS . "uploads" . DIRECTORY_SEPARATOR);
 
 // (A4) SQL FILES - FROM OLDEST TO NEWEST VERSIONS
 // @TODO - SET AS NECESSARY
-define("I_SQL", [
-  "SQL-Classiphpied-1.sql", "SQL-Classiphpied-2.sql", "SQL-Classiphpied-3.sql",
-  "SQL-Classiphpied-4.sql", "SQL-Classiphpied-5.sql"
-]);
+define("I_SQL", ["SQL-Classiphpied-1.sql"]);
 
 // (A5) HELPER FUNCTION - IMPORT SQL FILES
 function import ($pdo, $from=0) {
@@ -338,8 +335,7 @@ if ($_PHASE == "D") {
         <input type="email" name="mailfrom" value="sys@site.com" required>
       </div>
 
-      <!-- (DD10-5) JWT & ADMIN USER -->
-      <?php if (I_USER) { ?>
+      <!-- (DD10-5) JWT -->
       <h2>JSON WEB TOKEN</h2>
       <div class="iSec">
         <label>Secret Key <span onclick="install.rnd()">[RANDOM]</span></label>
@@ -349,6 +345,8 @@ if ($_PHASE == "D") {
         <div class="notes">* Your company name or domain name.</div>
       </div>
 
+      <!-- (DD10-6) ADMIN USER -->
+      <?php if (I_USER) { ?>
       <h2>ADMIN USER</h2>
       <div class="iSec">
         <label>Name</label>
@@ -363,7 +361,7 @@ if ($_PHASE == "D") {
       </div>
       <?php } ?>
 
-      <!-- (DD10-6) PUSH NOTIFICATION -->
+      <!-- (DD10-7) PUSH NOTIFICATION -->
       <?php if (I_PUSH) { ?>
       <h2>WEB PUSH VAPID KEYS</h2>
       <div class="iSec">
@@ -379,7 +377,7 @@ if ($_PHASE == "D") {
       </div>
       <?php } ?>
 
-      <!-- (DD10-7) GO! -->
+      <!-- (DD10-8) GO! -->
       <input id="gobtn" type="submit" value="Go!" disabled>
     </form>
   </body>
@@ -428,7 +426,7 @@ if ($_PHASE == "F") {
   // (F2) TRY CONNECT TO DATABASE
   try {
     $pdo = new PDO(
-      "mysql:host=".$_POST["dbhost"].";charset=utf8",
+      "mysql:host=".$_POST["dbhost"].";charset=utf8mb4",
       $_POST["dbuser"], $_POST["dbpass"], [
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -437,7 +435,7 @@ if ($_PHASE == "F") {
 
   // (F3) CREATE DATABASE + IMPORT SQL FILE(S)
   try {
-    $pdo->exec("CREATE DATABASE `".$_POST["dbname"]."`");
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `".$_POST["dbname"]."`");
     $pdo->exec("USE `".$_POST["dbname"]."`");
   } catch (Exception $ex) { exit("Unable to create database - " . $ex->getMessage()); }
   import($pdo);
@@ -466,12 +464,10 @@ if ($_PHASE == "F") {
     "API_CORS" => ( $_POST["apicors"]=="1" 
       ? ($_POST["corsallow"]=="" ? "true" : $_POST["corsallow"])
       : "false" ),
-    "API_HTTPS" => ($_POST["apihttps"]=="1" ? "true" : "false")
+    "API_HTTPS" => ($_POST["apihttps"]=="1" ? "true" : "false"),
+    "JWT_SECRET" => $_POST["jwtkey"],
+    "JWT_ISSUER" => $_POST["jwyiss"]
   ];
-  if (I_USER) {
-    $replace["JWT_SECRET"] = $_POST["jwtkey"];
-    $replace["JWT_ISSUER"] = $_POST["jwyiss"];
-  }
   if (I_PUSH) {
     $replace["PUSH_PRIVATE"] = $_POST["pushprivate"];
     $replace["PUSH_PUBLIC"] = $_POST["pushpublic"];

@@ -76,7 +76,7 @@ var cb = {
 
   // (B4) CHANGE "LOCAL" PAGE
   //  num : int, page number (1 to 5)
-  page : num => { for (let i in cb.hPages) {
+  page : num => { num--; for (let i in cb.hPages) {
     if (i==num) { cb.hPages[i].classList.remove("d-none"); }
     else { cb.hPages[i].classList.add("d-none"); }
   }},
@@ -130,7 +130,7 @@ var cb = {
 
   // (D) AJAX API CALL
   //  mod : string, module to call
-  //  req : string, request
+  //  act : string, action to perform
   //  data : object, data to send
   //  loading : boolean, show loading screen?
   //  debug : boolean, optional debug mode. default false.
@@ -144,7 +144,7 @@ var cb = {
   api : opt => {
     // (D1) INIT OPTIONS
     var options = {};
-    options.url = `${cbhost.api}${opt.mod}/${opt.req}/`;
+    options.url = `${cbhost.api}${opt.mod}/${opt.act}/`;
     if (opt.data) { options.data = opt.data; }
     if (opt.loading!=undefined) { options.loading = opt.loading; }
     if (opt.debug!=undefined) { options.debug = opt.debug; }
@@ -201,7 +201,7 @@ var cb = {
 
     // (E2) ON AJAX LOAD
     options.onpass = (res) => {
-      if (res=="E") { location.href = cbhost.base + "login/"; }
+      if (res=="E") { location.href = cbhost.admin + "login/"; }
       else {
         document.getElementById(opt.target).innerHTML = res;
         if (opt.onload) { opt.onload(); }
@@ -214,8 +214,8 @@ var cb = {
 
   // (F) SIGN OFF
   bye : () => cb.modal("Please Confirm", "Sign off?", () => cb.api({
-    mod : "session", req : "logout", passmsg : false,
-    onpass : () => location.href = cbhost.admin + "login/"
+    mod : "session", act : "logout", passmsg : false,
+    onpass : () => location.href = cbhost.base + "login/"
   })),
 
   // (G) PASSWORD/HASH STRENGTH CHECKER

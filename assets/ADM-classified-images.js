@@ -4,16 +4,16 @@ var img = {
   slot : 0, // current selected slot
   init : slot => {
     img.slot = slot;
-    if (img.loaded) { cb.page(2); img.list(); }
+    if (img.loaded) { cb.page(3); img.list(); }
     else {
       cb.load({
         page : "admin/cla/images", target : "cb-page-3",
         onload : () => {
           img.loaded = true;
-          cb.page(2);
+          cb.page(3);
           img.list();
         }
-      })
+      });
     }
   },
 
@@ -47,7 +47,7 @@ var img = {
   // (E) PICK IMAGE
   pick : i => {
     // (E1) BACK TO FORM
-    cb.page(1);
+    cb.page(2);
 
     // (E2) CREATE NEW IMAGE TAG
     var slot = img.slot,

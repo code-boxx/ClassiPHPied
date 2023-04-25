@@ -89,9 +89,9 @@
 
     <!-- (C) MAIN NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"><div class="container-fluid">
-    <!-- (C1) MENU TOGGLE BUTTON -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cb-navbar">
-        <span class="navbar-toggler-icon"></span>
+      <!-- (C1) MENU TOGGLE BUTTON -->
+      <button class="navbar-toggler btn btn-sm mi text-white" data-bs-toggle="collapse" data-bs-target="#cb-navbar">
+        menu
       </button>
 
       <!-- (C2) COLLAPSABLE WRAPPER -->
@@ -104,15 +104,13 @@
         <!-- (C2-2) LEFT MENU ITEMS
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="<?=HOST_BASE?>page">
-              <span class="mi mi-smol">featured_play_list</span> @ADD YOUR PAGES
-            </a>
+            <a class="nav-link" href="<?=HOST_BASE?>page">YOUR PAGES</a>
           </li>
         </ul>
         -->
       </div>
 
-      <?php if (isset($_SESS["user"])) { ?>
+      <?php if (isset($_CORE->Session->data["user"])) { ?>
       <!-- (C3) RIGHT ITEMS -->
       <div class="d-flex align-items-center">
         <a class="btn btn-sm mi text-primary me-2" href="<?=HOST_ADMIN?>">
@@ -124,8 +122,8 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
             <li class="dropdown-header">
-              <?=$_SESS["user"]["user_name"]?><br>
-              <?=$_SESS["user"]["user_email"]?>
+              <?=$_CORE->Session->data["user"]["user_name"]?><br>
+              <?=$_CORE->Session->data["user"]["user_email"]?>
             </li>
             <li class="dropdown-item text-warning" onclick="cb.bye()">
               <i class="mi mi-smol">logout</i> Logout

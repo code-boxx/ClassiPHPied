@@ -1,13 +1,16 @@
 <?php
 // (A) EXTRACT ID
-$_PATH = explode("/", rtrim($_PATH, "/"));
-$valid = count($_PATH) == 2;
-if ($valid) { $valid = is_numeric($_PATH[1]); }
+$id = explode("/", rtrim($_CORE->Route->path, "/"));
+$valid = count($id) == 2;
+if ($valid) {
+  $id = $id[1];
+  $valid = is_numeric($id);
+}
 
 // (B) GET CLASSIFIED
 if ($valid) {
   $_CORE->load("Classified");
-  $ad = $_CORE->Classified->get($_PATH[1]);
+  $ad = $_CORE->Classified->get($id);
   $valid = is_array($ad);
 }
 

@@ -1,13 +1,15 @@
 <?php
 // (A) FOR ADMIN ONLY
-if (!isset($_SESS["user"]) && $_PATH!="admin/login/") {
+if (!isset($_CORE->Session->data["user"]) && $_CORE->Route->path!="admin/login/") {
   if (isset($_POST["ajax"])) { exit("E"); }
   $_CORE->redirect("admin/login/");
 }
 
-// (B) LOAD REQUESTED PAGE
-$_PATH = explode("/", rtrim($_PATH, "/\\"));
-array_shift($_PATH);
-$_CORE->Route->load(
-  count($_PATH)==0 ? "ADM-home.php" : "ADM-" . implode("-", $_PATH) . ".php"
+// (B) STRIP "ADMIN/" FROM PATH
+$_CORE->Route->path = substr($_CORE->Route->path, 6);
+
+// (C) OK - LOAD PAGE
+$_CORE->Route->load($_CORE->Route->path==""
+  ? "ADM-home.php"
+  : "ADM-" . str_replace("/", "-", rtrim($_CORE->Route->path, "/\\")) . ".php"
 );

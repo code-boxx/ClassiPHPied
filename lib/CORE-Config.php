@@ -8,8 +8,8 @@ define("HOST_UPLOADS", HOST_ASSETS . "uploads/");
 define("HOST_ADMIN", HOST_BASE . "admin/");
 
 // (B) API ENDPOINT
-define("HOST_API", HOST_BASE_PATH . "api/");
-define("HOST_API_BASE", HOST_BASE . "api/");
+define("HOST_API", "api/");
+define("HOST_API_BASE", HOST_BASE . HOST_API);
 define("API_HTTPS", false);
 define("API_CORS", false);
 // define("API_CORS", false); // no cors, accept host_name only
@@ -37,11 +37,9 @@ define("JWT_EXPIRE", 0);
 define("JWT_ISSUER", "YOUR-NAME");
 define("JWT_SECRET", "YOUR-SECRET-KEY");
 
-/* ENABLE THIS SECTION IF USING PUSH NOTIFICATION MODULE
 // (F) PUSH NOTIFICATION KEYS
 define("PUSH_PUBLIC", "PUBLIC-KEY");
 define("PUSH_PRIVATE", "SECRET-KEY");
-*/
 
 // (G) ERROR HANDLING
 /* (G1) RECOMMENDED FOR LIVE SERVER

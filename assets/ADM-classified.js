@@ -4,7 +4,7 @@ var cla = {
   find : "", // current search
   id : "", // current category
   list : () =>  {
-    cb.page(0);
+    cb.page(1);
     cb.load({
       page : "admin/cla/list", target : "cla-list",
       data : {
@@ -37,7 +37,7 @@ var cla = {
     page : "admin/cla/form", target : "cb-page-2",
     data : { id : id ? id : "" },
     onload : () => {
-      cb.page(1);
+      cb.page(2);
       tinymce.remove();
       tinymce.init({
         selector : "#cla_text",
@@ -85,7 +85,7 @@ var cla = {
 
     // (E3) AJAX
     cb.api({
-      mod : "classified", req : "save",
+      mod : "classified", act : "save",
       data : data,
       passmsg : "Classified Ad Saved",
       onpass : cla.list
@@ -97,7 +97,7 @@ var cla = {
   //  id : int, classified ID
   //  confirm : boolean, confirmed delete
   del : id => cb.modal("Please confirm", "Delete this entry?", () => cb.api({
-    mod : "classified", req : "del",
+    mod : "classified", act : "del",
     data : { id: id },
     passmsg : "Classified Ad Deleted",
     onpass : cla.list

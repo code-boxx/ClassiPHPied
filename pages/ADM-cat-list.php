@@ -7,6 +7,7 @@ if (is_array($cat)) { foreach ($cat as $id=>$c) { ?>
 <div class="d-flex align-items-center border p-2">
   <div class="flex-grow-1">
     <strong><?=$c["cat_name"]?></strong><br>
+    <small class="fw-bold">Parent: <?=$c["parent_name"]?></small><br>
     <small><?=$c["cat_desc"]?></small>
   </div>
   <div class="dropdown">

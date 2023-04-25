@@ -3,7 +3,7 @@ var cat = {
   pg : 1, // current page
   find : "", // current search
   list : () => {
-    cb.page(0);
+    cb.page(1);
     cb.load({
       page : "admin/cat/list", target : "cat-list",
       data : {
@@ -33,7 +33,7 @@ var cat = {
   addEdit : id => cb.load({
     page : "admin/cat/form", target : "cb-page-2",
     data : { id : id ? id : "" },
-    onload : () => cb.page(1)
+    onload : () => cb.page(2)
   }),
 
   // (E) SAVE CATEGORY
@@ -41,14 +41,15 @@ var cat = {
     // (E1) GET DATA
     var data = {
       name : document.getElementById("cat_name").value,
-      desc : document.getElementById("cat_desc").value
+      desc : document.getElementById("cat_desc").value,
+      parent : document.getElementById("cat_parent").value
     };
     var id = document.getElementById("cat_id").value;
     if (id!="") { data.id = id; }
 
     // (E2) AJAX
     cb.api({
-      mod : "category", req : "save",
+      mod : "category", act : "save",
       data : data,
       passmsg : "Category Saved",
       onpass : cat.list
@@ -60,7 +61,7 @@ var cat = {
   //  id : int, category ID
   //  confirm : boolean, confirmed delete
   del : id => cb.modal("Please confirm", "Delete category?", () => cb.api({
-    mod : "category", req : "del",
+    mod : "category", act : "del",
     data : { id : id },
     passmsg : "Category Deleted",
     onpass : cat.list

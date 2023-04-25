@@ -18,10 +18,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       <div class="bg-white border p-4 mb-3">
         <input type="hidden" id="cla_id" value="<?=isset($ad)?$ad["cla_id"]:""?>">
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">category</span>
-          </div>
+        <div class="form-floating mb-3">
           <select class="form-select" id="cla_cat">
             <option value="">No Category</option>
             <?php
@@ -33,29 +30,23 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
             }}
             ?>
           </select>
+          <label>Category</label>
         </div>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">title</span>
-          </div>
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>" placeholder="Title">
+          <label>Title</label>
         </div>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">summarize</span>
-          </div>
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>" placeholder="Short Summary">
+          <label>Summary</label>
         </div>
 
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">history_toggle_off</span>
-          </div>
+        <div class="form-floating">
           <input type="datetime-local" class="form-control" id="cla_end" value="<?=isset($ad)?$ad["cla_end"]:""?>">
+          <label>End date, leave blank for none.</label>
         </div>
-        <div class="text-secondary mt-2">* Classified end date, leave blank for none.</div>
       </div>
 
       <!-- (C1-2) BODY -->
@@ -67,25 +58,19 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       <!-- (C1-3) CONTACT PERSON -->
       <div class="fw-bold text-danger mb-2">CONTACT PERSON</div>
       <div class="bg-white border p-4 mb-3">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">person</span>
-          </div>
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>" placeholder="Name">
+          <label>Name</label>
         </div>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">email</span>
-          </div>
+        <div class="form-floating mb-3">
           <input type="email" class="form-control" id="cla_email" required value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email">
+          <label>Email</label>
         </div>
 
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text mi">phone</span>
-          </div>
+        <div class="form-floating">
           <input type="text" class="form-control" id="cla_tel" value="<?=isset($ad)?$ad["cla_tel"]:""?>" placeholder="Telephone">
+          <label>Telephone</label>
         </div>
       </div>
     </div>
@@ -114,7 +99,7 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
 
   <!-- (C3) BOTTOM -->
   <div class="row"><div class="col">
-    <input type="button" class="col btn btn-danger" value="Back" onclick="cb.page(0)">
+    <input type="button" class="col btn btn-danger" value="Back" onclick="cb.page(1)">
     <input type="submit" class="col btn btn-primary" value="Save">
   </div></div>
 </form>

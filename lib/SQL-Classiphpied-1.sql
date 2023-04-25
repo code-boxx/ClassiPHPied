@@ -14,7 +14,11 @@ INSERT INTO `settings` (`setting_name`, `setting_description`, `setting_value`, 
   ('APP_VER', 'App version', '1', 0),
   ('EMAIL_FROM', 'System email from', 'sys@site.com', 1),
   ('PAGE_PER', 'Number of entries per page', '20', 1),
-  ('CLA_IMAGES', 'Max images per ad.', '3', 1);
+  ('CLA_IMAGES', 'Max images per ad.', '3', 1),
+  ('D_LONG', 'MYSQL date format (long)', '%e %M %Y', 1),
+  ('D_SHORT', 'MYSQL date format (short)', '%Y-%m-%d', 1),
+  ('DT_LONG', 'MYSQL date time format (long)', '%e %M %Y %l:%i:%S %p', 1),
+  ('DT_SHORT', 'MYSQL date time format (short)', '%Y-%m-%d %H:%i:%S', 1);
 
 -- (B) USERS
 CREATE TABLE `users` (
@@ -32,30 +36,43 @@ ALTER TABLE `users`
 ALTER TABLE `users`
   MODIFY `user_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
--- (C) CATEGORIES
+-- (C) FORGOTTEN PASSWORD RESET
+CREATE TABLE `password_reset` (
+  `user_id` bigint(20) NOT NULL,
+  `reset_hash` varchar(64) NOT NULL,
+  `reset_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `password_reset`
+  ADD PRIMARY KEY (`user_id`);
+
+-- (D) CATEGORIES
 CREATE TABLE `categories` (
   `cat_id` bigint(20) NOT NULL,
+  `parent_id` bigint(20) NOT NULL DEFAULT 0,
   `cat_name` varchar(255) NOT NULL,
   `cat_desc` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`),
+  ADD KEY `parent_id` (`parent_id`),
   ADD KEY `cat_name` (`cat_name`),
   ADD KEY `cat_desc` (`cat_desc`);
 
 ALTER TABLE `categories`
   MODIFY `cat_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
--- (D) CLASSIFIEDS
+-- (E) CLASSIFIEDS
 CREATE TABLE `classifieds` (
   `cla_id` bigint(20) NOT NULL,
   `cla_title` varchar(255) NOT NULL,
   `cla_summary` varchar(255) NOT NULL,
   `cla_text` text NOT NULL,
   `cla_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `cla_end` DATETIME DEFAULT NULL,
   `cla_person` varchar(255) NOT NULL,
-  `cla_email` varchar(255) DEFAULT NULL,
+  `cla_email` varchar(255) NOT NULL,
   `cla_tel` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -65,13 +82,14 @@ ALTER TABLE `classifieds`
   ADD KEY `cla_summary` (`cla_summary`),
   ADD FULLTEXT KEY `cla_text` (`cla_text`),
   ADD KEY `cla_date` (`cla_date`),
+  ADD KEY `cla_end` (`cla_end`),
   ADD KEY `cla_person` (`cla_person`),
   ADD KEY `cla_email` (`cla_email`);
 
 ALTER TABLE `classifieds`
   MODIFY `cla_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
--- (E) CLASSIFIED IMAGES
+-- (F) CLASSIFIED IMAGES
 CREATE TABLE `cla_images` (
   `cla_id` bigint(20) NOT NULL,
   `slot_id` bigint(20) NOT NULL,
@@ -81,7 +99,7 @@ CREATE TABLE `cla_images` (
 ALTER TABLE `cla_images`
   ADD PRIMARY KEY (`cla_id`,`slot_id`) USING BTREE;
 
--- (F) CLASSIFIED TO CATEGORY
+-- (G) CLASSIFIED TO CATEGORY
 CREATE TABLE `cla_to_cat` (
   `cla_id` bigint(20) NOT NULL,
   `cat_id` bigint(20) NOT NULL
