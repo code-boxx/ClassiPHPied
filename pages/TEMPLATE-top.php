@@ -101,37 +101,54 @@
           <img src="<?=HOST_ASSETS?>favicon.png" loading="lazy" width="32" height="32">
         </a>
 
-        <!-- (C2-2) LEFT MENU ITEMS
+        <!-- (C2-2) LEFT MENU ITEMS -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="<?=HOST_BASE?>page">YOUR PAGES</a>
+            <a class="nav-link" href="<?=HOST_BASE?>categories">Categories</a>
           </li>
         </ul>
-        -->
       </div>
 
-      <?php if (isset($_CORE->Session->data["user"])) { ?>
       <!-- (C3) RIGHT ITEMS -->
       <div class="d-flex align-items-center">
+        <?php if (isset($_CORE->Session->data["user"]) && $_CORE->Session->data["user"]["user_level"]=="A") { ?>
+        <!-- (C3-1) SWITCH TO ADMIN PANEL -->
         <a class="btn btn-sm mi text-primary me-2" href="<?=HOST_ADMIN?>">
           wysiwyg
         </a>
+        <?php } ?>
+
+        <!-- (C3-2) USER ACCOUNT -->
         <div class="dropdown">
           <button class="btn btn-sm text-white mi" type="button" data-bs-toggle="dropdown">
             person
           </button>
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+            <?php if (isset($_CORE->Session->data["user"])) { ?>
             <li class="dropdown-header">
               <?=$_CORE->Session->data["user"]["user_name"]?><br>
               <?=$_CORE->Session->data["user"]["user_email"]?>
             </li>
+            <li><a class="dropdown-item" href="<?=HOST_BASE?>myaccount">
+              <i class="mi mi-smol">person</i> My Account
+            </a></li>
             <li class="dropdown-item text-warning" onclick="cb.bye()">
               <i class="mi mi-smol">logout</i> Logout
             </li>
+            <?php } else { ?>
+            <li><a class="dropdown-item" href="<?=HOST_BASE?>login">
+              <i class="mi mi-smol">key</i> Login
+            </a></li>
+            <li><a class="dropdown-item" href="<?=HOST_BASE?>forgot">
+              <i class="mi mi-smol">question_mark</i> Forgot Password
+            </a></li>
+            <li><a class="dropdown-item" href="<?=HOST_BASE?>register">
+              <i class="mi mi-smol">edit</i> Register
+            </a></li>
+            <?php } ?>
           </ul>
         </div>
       </div>
-      <?php } ?>
     </div></nav>
 
     <!-- (D) MAIN PAGE -->

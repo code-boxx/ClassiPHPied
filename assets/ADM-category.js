@@ -60,7 +60,7 @@ var cat = {
   // (F) DELETE CATEGORY
   //  id : int, category ID
   //  confirm : boolean, confirmed delete
-  del : id => cb.modal("Please confirm", "Delete category?", () => cb.api({
+  del : id => cb.modal("Are you sure?", "All child categories will revert to root.", () => cb.api({
     mod : "category", act : "del",
     data : { id : id },
     passmsg : "Category Deleted",

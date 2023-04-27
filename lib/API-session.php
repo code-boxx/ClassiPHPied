@@ -3,6 +3,9 @@
 $_CORE->autoAPI([
   "login" => ["Users", "login"],
   "logout" => ["Users", "logout"],
+  "register" => ["Users", "register"],
+  "activate" => ["Users", "hsend"],
+  "update" => ["Users", "update"],
   "forgotA" => ["Forgot", "request"],
   "forgotB" => ["Forgot", "reset"]
 ]);

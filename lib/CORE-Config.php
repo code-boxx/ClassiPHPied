@@ -37,9 +37,9 @@ define("JWT_EXPIRE", 0);
 define("JWT_ISSUER", "YOUR-NAME");
 define("JWT_SECRET", "YOUR-SECRET-KEY");
 
-// (F) PUSH NOTIFICATION KEYS
+/* (F) PUSH NOTIFICATION KEYS
 define("PUSH_PUBLIC", "PUBLIC-KEY");
-define("PUSH_PRIVATE", "SECRET-KEY");
+define("PUSH_PRIVATE", "SECRET-KEY"); */
 
 // (G) ERROR HANDLING
 /* (G1) RECOMMENDED FOR LIVE SERVER
@@ -54,3 +54,8 @@ error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 ini_set("log_errors", 0);
 define("ERR_SHOW", true);
+
+// (H) USER LEVELS
+define("USR_LVL", [
+  "A" => "Admin", "U" => "User"
+]);

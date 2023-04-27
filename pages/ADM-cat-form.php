@@ -10,12 +10,12 @@ $parents = $_CORE->autoCall("Category", "getSwitchable");
   <div class="bg-white border p-4 mb-3">
     <input type="hidden" id="cat_id" value="<?=isset($cat)?$cat["cat_id"]:""?>">
     <div class="form-floating mb-4">
-      <input type="text" class="form-control" id="cat_name" required value="<?=isset($cat)?$cat["cat_name"]:""?>" placeholder="Category Name">
+      <input type="text" class="form-control" id="cat_name" required value="<?=isset($cat)?$cat["cat_name"]:""?>">
       <label>Category Name</label>
     </div>
 
     <div class="form-floating mb-4">
-      <input type="text" class="form-control" id="cat_desc" value="<?=isset($cat)?$cat["cat_desc"]:""?>" placeholder="Category Description">
+      <input type="text" class="form-control" id="cat_desc" value="<?=isset($cat)?$cat["cat_desc"]:""?>">
       <label>Category Description</label>
     </div>
 

@@ -1,9 +1,6 @@
 <?php
 // (A) FOR ADMIN ONLY
-if (!isset($_CORE->Session->data["user"]) && $_CORE->Route->path!="admin/login/") {
-  if (isset($_POST["ajax"])) { exit("E"); }
-  $_CORE->redirect("admin/login/");
-}
+$_CORE->ucheck("A");
 
 // (B) REQUESTED REPORT
 $req = explode("/", $_CORE->Route->path);

@@ -12,6 +12,9 @@ self.addEventListener("install", evt => {
       // (A2) ICONS + IMAGES
       "assets/favicon.png",
       "assets/ico-512.png",
+      "assets/acct.webp",
+      "assets/forgot.webp",
+      "assets/login.webp",
       // (A3) COMMON INTERFACE
       "CB-manifest.json",
       "assets/PAGE-cb.js",
@@ -22,12 +25,15 @@ self.addEventListener("install", evt => {
       "assets/ADM-classified-images.js",
       "assets/ADM-images.css",
       "assets/ADM-images.js",
-      "assets/ADM-login.js",
       "assets/ADM-settings.js",
       "assets/ADM-users.js",
+      "assets/PAGE-activate.js",
       "assets/PAGE-classified.css",
       "assets/PAGE-classified.js",
       "assets/PAGE-forgot.js",
+      "assets/PAGE-login.js",
+      "assets/PAGE-myaccount.js",
+      "assets/PAGE-register.js",
       "assets/PAGE-show.js"
     ]))
     .catch(err => console.error(err))

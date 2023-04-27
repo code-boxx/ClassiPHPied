@@ -23,7 +23,17 @@ class Category extends Core {
   // (B) DELETE CATEGORY
   //  $id : category id
   function del ($id) {
+    // (B1) GET CHILDREN
+    $children = $this->getChildren($id);
+    
+    // (B2) REVERT CHILDREN TO ROOT
     $this->DB->start();
+    if (count($children) > 0) {
+      $in = implode(",", $children);
+      $this->DB->query("UPDATE `categories` SET `parent_id`=0 WHERE `cat_id` IN ($in)");
+    }
+
+    // (B3) DELETE CATEGORY
     $this->DB->delete("categories", "`cat_id`=?", [$id]);
     $this->DB->delete("cla_to_cat", "`cat_id`=?", [$id]);
     $this->DB->end();

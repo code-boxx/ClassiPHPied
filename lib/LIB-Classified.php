@@ -146,4 +146,17 @@ class Classified extends Core {
     if ($page != null) { $sql .= $this->Core->page["lim"]; }
     return $this->DB->fetchAll($sql, $data, "cla_id");
   }
+
+  // (E) GET IN CATEGORY
+  //  $id : category id
+  function getInCat ($id) {
+    $sql = "SELECT c.`cla_id`, c.`cla_title`, c.`cla_summary`, c.`cla_date`, c.`cla_end`, ci.`img_file`,
+            DATE_FORMAT(c.`cla_date`, '".DT_LONG."') `cd`, DATE_FORMAT(c.`cla_end`, '".DT_LONG."') `ce`
+            FROM `classifieds` c
+            LEFT JOIN `cla_images` ci ON (c.`cla_id`=ci.`cla_id` AND ci.`slot_id`=1)
+            LEFT JOIN `cla_to_cat` cc ON (cc.`cla_id`=c.`cla_id`)
+            WHERE cc.`cat_id`=?
+            ORDER BY c.`cla_date` DESC";
+    return $this->DB->fetchAll($sql, [$id], "cla_id");
+  }
 }

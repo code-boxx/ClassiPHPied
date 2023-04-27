@@ -4,6 +4,7 @@
 
 $wild = [
   "admin/" => "ADM-check.php",
+  "category/" => "PAGE-category.php",
   "show/" => "PAGE-show.php",
   "report/" => "REPORT-loader.php"
 ];

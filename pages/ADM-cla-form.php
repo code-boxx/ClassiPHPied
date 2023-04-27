@@ -34,12 +34,12 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
         </div>
 
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>" placeholder="Title">
+          <input type="text" class="form-control" id="cla_title" required value="<?=isset($ad)?$ad["cla_title"]:""?>">
           <label>Title</label>
         </div>
 
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>" placeholder="Short Summary">
+          <input type="text" class="form-control" id="cla_summary" required value="<?=isset($ad)?$ad["cla_summary"]:""?>">
           <label>Summary</label>
         </div>
 
@@ -59,17 +59,17 @@ if ($edit) { $ad = $_CORE->autoCall("Classified", "get"); }
       <div class="fw-bold text-danger mb-2">CONTACT PERSON</div>
       <div class="bg-white border p-4 mb-3">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>" placeholder="Name">
+          <input type="text" class="form-control" id="cla_person" required value="<?=isset($ad)?$ad["cla_person"]:""?>">
           <label>Name</label>
         </div>
 
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="cla_email" required value="<?=isset($ad)?$ad["cla_email"]:""?>" placeholder="Email">
+          <input type="email" class="form-control" id="cla_email" required value="<?=isset($ad)?$ad["cla_email"]:""?>">
           <label>Email</label>
         </div>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="cla_tel" value="<?=isset($ad)?$ad["cla_tel"]:""?>" placeholder="Telephone">
+          <input type="text" class="form-control" id="cla_tel" value="<?=isset($ad)?$ad["cla_tel"]:""?>">
           <label>Telephone</label>
         </div>
       </div>
