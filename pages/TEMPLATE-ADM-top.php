@@ -90,7 +90,7 @@
 
     <!-- (C) MAIN INTERFACE -->
     <div id="cb-body" class="d-flex">
-      <?php if (isset($_CORE->Session->data["user"])) { ?>
+      <?php if (isset($_SESSION["user"])) { ?>
       <!-- (C1) LEFT SIDEBAR -->
       <nav id="cb-side" class="bg-dark text-white p-2"><ul class="navbar-nav">
         <li class="nav-item">
@@ -129,7 +129,7 @@
 
       <!-- (C2) RIGHT CONTENTS -->
       <div class="flex-grow-1">
-        <?php if (isset($_CORE->Session->data["user"])) { ?>
+        <?php if (isset($_SESSION["user"])) { ?>
         <!-- (C2-1) TOP NAV -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container-fluid">
           <button id="cb-toggle" class="navbar-toggler btn btn-sm mi text-white" onclick="cb.toggle()">
@@ -147,8 +147,8 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                 <li class="dropdown-header">
-                  <?=$_CORE->Session->data["user"]["user_name"]?><br>
-                  <?=$_CORE->Session->data["user"]["user_email"]?>
+                  <?=$_SESSION["user"]["user_name"]?><br>
+                  <?=$_SESSION["user"]["user_email"]?>
                 </li>
                 <li class="dropdown-item text-warning" onclick="cb.bye()">
                   <i class="mi mi-smol">logout</i> Logout

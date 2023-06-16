@@ -1,6 +1,6 @@
 <?php
 // (A) ALREADY SIGNED IN
-if (isset($_CORE->Session->data["user"])) { $_CORE->redirect("", HOST_ADMIN); }
+if (isset($_SESSION["user"])) { $_CORE->redirect("", HOST_ADMIN); }
 
 // (B) LOGIN PAGE
 $_PMETA = ["load" => [["s", HOST_ASSETS."ADM-login.js", "defer"]]];
